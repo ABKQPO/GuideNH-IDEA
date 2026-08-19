@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "keys": {
+    "navigation": {
+      "type": "map",
+      "description": "Adds the page to the guide navigation tree.",
+      "children": {
+        "title": { "type": "string", "description": "Navigation title." },
+        "parent": { "type": "string", "description": "Parent page id." },
+        "position": { "type": "number", "description": "Sibling sort position." },
+        "priority": { "type": "number", "description": "Override priority." },
+        "recommend": { "type": "number", "description": "Recommendation sort weight." },
+        "icon": { "type": "string", "description": "Item icon id." },
+        "icons": { "type": "list", "description": "Rotating item icons." },
+        "icon_texture": { "type": "string", "description": "Texture icon path." },
+        "icon_textures": { "type": "list", "description": "Rotating texture icons." },
+        "required_mod": { "type": "string", "description": "Required mod id." },
+        "required_mods": { "type": "list", "description": "Required mod ids." },
+        "excluded_mod": { "type": "string", "description": "Mod id that hides this page when loaded." },
+        "excluded_mods": { "type": "list", "description": "Mods that hide this page when any is loaded." }
+      }
+    },
+    "categories": { "type": "string_or_list", "description": "MediaWiki-style categories; accepts either a single category string or a list; each entry can use category or category|sort key." },
+    "item_id": { "type": "string", "description": "One NEI-style item filter expression indexed to this page." },
+    "item_ids": { "type": "list", "description": "NEI-style item filter expressions indexed to this page." },
+    "ore_ids": { "type": "list", "description": "Ore dictionary names indexed to this page." },
+    "quest_ids": { "type": "list", "description": "BetterQuesting UUIDs or compact Base64 ids indexed to this page." },
+    "author": { "type": "string", "description": "Page author." },
+    "authors": { "type": "list", "description": "Page authors." },
+    "date": { "type": "date", "description": "Creation date." },
+    "title": { "type": "string", "description": "Page title override." },
+    "updated": { "type": "date", "description": "Updated date." },
+    "zoom": { "type": "number", "description": "Page content zoom." }
+  }
+}

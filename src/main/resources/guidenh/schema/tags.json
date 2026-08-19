@@ -1,0 +1,4136 @@
+{
+  "schemaVersion": 1,
+  "tags": {
+    "a": {
+      "name": "a",
+      "kind": "inline",
+      "description": "Generated from GuideNH a compiler source.",
+      "attributes": {
+        "href": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "name": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "title": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "BarChart": {
+      "name": "BarChart",
+      "kind": "chart",
+      "description": "Generated from GuideNH BarChart compiler source.",
+      "attributes": {
+        "background": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "barWidthRatio": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "border": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "categories": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "cornerLegend": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "cornerLegendBackground": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "cornerLegendHeight": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "cornerLegendWidth": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "height": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "labelColor": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "labelPosition": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "legend": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showXGrid": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "showYGrid": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "title": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "titleColor": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "xAxisLabel": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "xAxisMax": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "xAxisMin": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "xAxisStep": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "xAxisTickFormat": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "xAxisUnit": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "xGridColor": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yAxisLabel": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yAxisMax": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "yAxisMin": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "yAxisStep": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "yAxisTickFormat": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yAxisUnit": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yGridColor": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [
+        "LineSeries",
+        "PieInset",
+        "Series"
+      ],
+      "snippets": []
+    },
+    "Block": {
+      "name": "Block",
+      "kind": "scene",
+      "description": "Places a block in a GameScene.",
+      "attributes": {
+        "facing": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "formed": {
+          "type": "boolean",
+          "valueStyle": "expression",
+          "description": "Whether placed controller previews should be treated as formed during preview sync. Defaults to false."
+        },
+        "id": {
+          "type": "item",
+          "valueStyle": "string",
+          "requiredWhenMissing": [
+            "ore"
+          ],
+          "required": true,
+          "description": "Block id."
+        },
+        "meta": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "nbt": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "ore": {
+          "type": "ore",
+          "valueStyle": "string"
+        },
+        "x": {
+          "type": "number",
+          "valueStyle": "string",
+          "description": "X position."
+        },
+        "y": {
+          "type": "number",
+          "valueStyle": "string",
+          "description": "Y position."
+        },
+        "z": {
+          "type": "number",
+          "valueStyle": "string",
+          "description": "Z position."
+        }
+      },
+      "children": [],
+      "snippets": [
+        "guidenh.block"
+      ]
+    },
+    "BlockAnnotation": {
+      "name": "BlockAnnotation",
+      "kind": "any",
+      "description": "Generated from GuideNH BlockAnnotation compiler source.",
+      "attributes": {
+        "alwaysOnTop": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "color": {
+          "type": "color",
+          "valueStyle": "string"
+        },
+        "pos": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showWhenChannels": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showWhenStructure": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showWhenTier": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "thickness": {
+          "type": "number",
+          "valueStyle": "expression"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "BlockAnnotationTemplate": {
+      "name": "BlockAnnotationTemplate",
+      "kind": "any",
+      "description": "Generated from GuideNH BlockAnnotationTemplate compiler source.",
+      "attributes": {
+        "id": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showWhenChannels": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showWhenStructure": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showWhenTier": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "BlockImage": {
+      "name": "BlockImage",
+      "kind": "block",
+      "description": "Generated from GuideNH BlockImage compiler source.",
+      "attributes": {
+        "align": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "height": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "id": {
+          "type": "string",
+          "valueStyle": "string",
+          "requiredWhenMissing": [
+            "ore"
+          ]
+        },
+        "meta": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "nbt": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "ore": {
+          "type": "ore",
+          "valueStyle": "string"
+        },
+        "perspective": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "scale": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "wrap": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "blockquote": {
+      "name": "blockquote",
+      "kind": "block",
+      "description": "Generated from GuideNH blockquote compiler source.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "BlockStat": {
+      "name": "BlockStat",
+      "kind": "block",
+      "description": "Generated from GuideNH manual block stats entry.",
+      "attributes": {
+        "count": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "id": {
+          "type": "item",
+          "valueStyle": "string"
+        },
+        "item": {
+          "type": "item",
+          "valueStyle": "string"
+        },
+        "ore": {
+          "type": "ore",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "BlockStats": {
+      "name": "BlockStats",
+      "kind": "block",
+      "description": "Generated from GuideNH scene block stats configuration.",
+      "attributes": {
+        "buttonEnabled": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "corner": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "dock": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "filter": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "filterMode": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "maxHeight": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "maxWidth": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "mode": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showNames": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "visible": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        }
+      },
+      "children": [
+        "BlockStat"
+      ],
+      "snippets": []
+    },
+    "BoxAnnotation": {
+      "name": "BoxAnnotation",
+      "kind": "any",
+      "description": "Generated from GuideNH BoxAnnotation compiler source.",
+      "attributes": {
+        "alwaysOnTop": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "color": {
+          "type": "color",
+          "valueStyle": "string"
+        },
+        "max": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "min": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showWhenChannels": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showWhenStructure": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showWhenTier": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "thickness": {
+          "type": "number",
+          "valueStyle": "expression"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "br": {
+      "name": "br",
+      "kind": "inline",
+      "description": "Generated from GuideNH br compiler source.",
+      "attributes": {
+        "clear": {
+          "type": "enum",
+          "valueStyle": "string",
+          "values": [
+            "none",
+            "left",
+            "right",
+            "all"
+          ]
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "Category": {
+      "name": "Category",
+      "kind": "block",
+      "description": "Generated from GuideNH Category compiler source.",
+      "attributes": {
+        "name": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "rows": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "code": {
+      "name": "code",
+      "kind": "inline",
+      "description": "Generated from GuideNH code compiler source.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "Color": {
+      "name": "Color",
+      "kind": "inline",
+      "description": "Generated from GuideNH Color compiler source.",
+      "attributes": {
+        "color": {
+          "type": "color",
+          "valueStyle": "string"
+        },
+        "id": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "Column": {
+      "name": "Column",
+      "kind": "block",
+      "description": "Generated from GuideNH Column compiler source.",
+      "attributes": {
+        "align": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "alignItems": {
+          "type": "enum",
+          "valueStyle": "string"
+        },
+        "fullWidth": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "gap": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "wrap": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "ColumnChart": {
+      "name": "ColumnChart",
+      "kind": "chart",
+      "description": "Generated from GuideNH ColumnChart compiler source.",
+      "attributes": {
+        "background": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "barWidthRatio": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "border": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "categories": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "cornerLegend": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "cornerLegendBackground": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "cornerLegendHeight": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "cornerLegendWidth": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "height": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "labelColor": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "labelPosition": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "legend": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showXGrid": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "showYGrid": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "title": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "titleColor": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "xAxisLabel": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "xAxisMax": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "xAxisMin": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "xAxisStep": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "xAxisTickFormat": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "xAxisUnit": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "xGridColor": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yAxisLabel": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yAxisMax": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "yAxisMin": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "yAxisStep": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "yAxisTickFormat": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yAxisUnit": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yGridColor": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [
+        "LineSeries",
+        "PieInset",
+        "Series"
+      ],
+      "snippets": []
+    },
+    "CommandLink": {
+      "name": "CommandLink",
+      "kind": "inline",
+      "description": "Generated from GuideNH CommandLink compiler source.",
+      "attributes": {
+        "close": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "command": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "title": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "Comment": {
+      "name": "Comment",
+      "kind": "any",
+      "description": "Generated from GuideNH Comment compiler source.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "ContentTabs": {
+      "name": "ContentTabs",
+      "kind": "block",
+      "description": "Generated from GuideNH ContentTabs compiler source.",
+      "attributes": {
+        "color": {
+          "type": "color",
+          "valueStyle": "string"
+        },
+        "default": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "defaultIndex": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "height": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "icon": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "icon_item": {
+          "type": "item",
+          "valueStyle": "string"
+        },
+        "icon_png": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "iconItem": {
+          "type": "item",
+          "valueStyle": "string"
+        },
+        "iconPng": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "title": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
+      "children": [
+        "Tab"
+      ],
+      "snippets": []
+    },
+    "CsvTable": {
+      "name": "CsvTable",
+      "kind": "block",
+      "description": "Generated from GuideNH CsvTable compiler source.",
+      "attributes": {
+        "header": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "src": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "widths": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "del": {
+      "name": "del",
+      "kind": "inline",
+      "description": "Generated from GuideNH del compiler source.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "details": {
+      "name": "details",
+      "kind": "block",
+      "description": "Generated from GuideNH details compiler source.",
+      "attributes": {
+        "align": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "height": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "open": {
+          "type": "boolean",
+          "valueStyle": "bare"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "wrap": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "DiamondAnnotation": {
+      "name": "DiamondAnnotation",
+      "kind": "any",
+      "description": "Generated from GuideNH DiamondAnnotation compiler source.",
+      "attributes": {
+        "alwaysOnTop": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "color": {
+          "type": "color",
+          "valueStyle": "string"
+        },
+        "pos": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showWhenChannels": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showWhenStructure": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showWhenTier": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "div": {
+      "name": "div",
+      "kind": "any",
+      "description": "Generated from GuideNH div compiler source.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "dotted": {
+      "name": "dotted",
+      "kind": "inline",
+      "description": "Generated from GuideNH dotted compiler source.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "em": {
+      "name": "em",
+      "kind": "inline",
+      "description": "Generated from GuideNH em compiler source.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "Entity": {
+      "name": "Entity",
+      "kind": "any",
+      "description": "Generated from GuideNH Entity compiler source.",
+      "attributes": {
+        "baby": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "capeRotation": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "data": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "headRotation": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "id": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "leftArmRotation": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "leftLegRotation": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "mount": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "name": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "rightArmRotation": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "rightLegRotation": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "rotationX": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "rotationY": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "sceneEntityId": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showCape": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "showName": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "unmount": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "uuid": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "x": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "y": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "z": {
+          "type": "number",
+          "valueStyle": "expression"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "FileTree": {
+      "name": "FileTree",
+      "kind": "block",
+      "description": "Generated from GuideNH FileTree compiler source.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "FloatingImage": {
+      "name": "FloatingImage",
+      "kind": "inline",
+      "description": "Generated from GuideNH FloatingImage compiler source.",
+      "attributes": {
+        "align": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "alt": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "border": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "borderColor": {
+          "type": "color",
+          "valueStyle": "string"
+        },
+        "borderThickness": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "displayHeight": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "displayWidth": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "h": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "height": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "scaleX": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "scaleY": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "sound": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "soundSrc": {
+          "type": "resource",
+          "valueStyle": "string"
+        },
+        "src": {
+          "type": "resource",
+          "valueStyle": "string"
+        },
+        "title": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "trigger": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "volume": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "w": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "wrap": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "x": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "y": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
+      "children": [
+        "ImageAnnotation",
+        "SoundArea"
+      ],
+      "snippets": []
+    },
+    "FootnoteList": {
+      "name": "FootnoteList",
+      "kind": "block",
+      "description": "Generated from GuideNH FootnoteList compiler source.",
+      "attributes": {
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "Function": {
+      "name": "Function",
+      "kind": "block",
+      "description": "Generated from GuideNH Function compiler source.",
+      "attributes": {
+        "atX": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "atY": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "autoPointColor": {
+          "type": "color",
+          "valueStyle": "string"
+        },
+        "autoPointLabel": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "axisColor": {
+          "type": "color",
+          "valueStyle": "string"
+        },
+        "background": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "border": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "color": {
+          "type": "color",
+          "valueStyle": "string"
+        },
+        "cornerLegend": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "cornerLegendBackground": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "cornerLegendHeight": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "cornerLegendWidth": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "domain": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "expr": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "gridColor": {
+          "type": "color",
+          "valueStyle": "string"
+        },
+        "height": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "inverse": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "label": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "plot": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "pointEveryX": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "pointEveryY": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "quadrants": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showAxes": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "showFunction": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "showGrid": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "showValues": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "title": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "tooltip": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "x": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "xLabel": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "xMax": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "xMin": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "xRange": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "xStep": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "y": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yLabel": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yMax": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yMin": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yRange": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yStep": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "FunctionGraph": {
+      "name": "FunctionGraph",
+      "kind": "block",
+      "description": "Generated from GuideNH FunctionGraph compiler source.",
+      "attributes": {
+        "axisColor": {
+          "type": "color",
+          "valueStyle": "string"
+        },
+        "background": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "border": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "cornerLegend": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "cornerLegendBackground": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "cornerLegendHeight": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "cornerLegendWidth": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "domain": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "expr": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "gridColor": {
+          "type": "color",
+          "valueStyle": "string"
+        },
+        "height": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "plot": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "quadrants": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showAxes": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "showGrid": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "title": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "xLabel": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "xMax": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "xMin": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "xRange": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "xStep": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yLabel": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yMax": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yMin": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yRange": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yStep": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [
+        "Function",
+        "Plot",
+        "Point"
+      ],
+      "snippets": []
+    },
+    "GameScene": {
+      "name": "GameScene",
+      "kind": "block",
+      "description": "Interactive GuideNH 3D scene.",
+      "attributes": {
+        "align": {
+          "type": "enum",
+          "values": [
+            "left",
+            "center",
+            "right"
+          ],
+          "description": "Block alignment.",
+          "valueStyle": "string"
+        },
+        "allowLayerSlider": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "buttonEnabled": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "centerX": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "centerY": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "centerZ": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "corner": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "count": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "dock": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "filter": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "filterMode": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "gridButtonEnabled": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "height": {
+          "type": "number",
+          "valueStyle": "string",
+          "description": "Scene height in guide pixels."
+        },
+        "id": {
+          "type": "item",
+          "valueStyle": "string"
+        },
+        "interactive": {
+          "type": "boolean",
+          "valueStyle": "expression",
+          "description": "Whether the scene accepts mouse input."
+        },
+        "item": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "maxHeight": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "maxWidth": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "mode": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "offsetX": {
+          "type": "number",
+          "valueStyle": "expression",
+          "description": "Screen-space horizontal camera offset."
+        },
+        "offsetY": {
+          "type": "number",
+          "valueStyle": "expression",
+          "description": "Screen-space vertical camera offset."
+        },
+        "ore": {
+          "type": "ore",
+          "valueStyle": "string"
+        },
+        "perspective": {
+          "type": "string",
+          "valueStyle": "string",
+          "description": "Camera perspective preset."
+        },
+        "rotateX": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "rotateY": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "rotateZ": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "showBackground": {
+          "type": "boolean",
+          "valueStyle": "expression",
+          "description": "Whether the scene draws its background fill and border."
+        },
+        "showGrid": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "showNames": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "visible": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string",
+          "description": "Scene width in guide pixels."
+        },
+        "wrap": {
+          "type": "enum",
+          "values": [
+            "square"
+          ],
+          "description": "Text wrap mode.",
+          "valueStyle": "string"
+        },
+        "zoom": {
+          "type": "number",
+          "valueStyle": "expression",
+          "description": "Initial scene zoom."
+        }
+      },
+      "children": [
+        "Block",
+        "BlockAnnotation",
+        "BlockAnnotationTemplate",
+        "BlockStats",
+        "BoxAnnotation",
+        "DiamondAnnotation",
+        "Entity",
+        "ImportPonder",
+        "ImportStructure",
+        "ImportStructureLib",
+        "IsometricCamera",
+        "LineAnnotation",
+        "Particle",
+        "PlaceBlock",
+        "PlaySound",
+        "RemoveBlocks",
+        "RemoveEntity",
+        "ReplaceBlock",
+        "TextAnnotation",
+        "Weather"
+      ],
+      "snippets": [
+        "guidenh.gameScene"
+      ]
+    },
+    "h1": {
+      "name": "h1",
+      "kind": "block",
+      "description": "Generated from GuideNH h1 compiler source.",
+      "attributes": {
+        "depth": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "h2": {
+      "name": "h2",
+      "kind": "block",
+      "description": "Generated from GuideNH h2 compiler source.",
+      "attributes": {
+        "depth": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "h3": {
+      "name": "h3",
+      "kind": "block",
+      "description": "Generated from GuideNH h3 compiler source.",
+      "attributes": {
+        "depth": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "h4": {
+      "name": "h4",
+      "kind": "block",
+      "description": "Generated from GuideNH h4 compiler source.",
+      "attributes": {
+        "depth": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "h5": {
+      "name": "h5",
+      "kind": "block",
+      "description": "Generated from GuideNH h5 compiler source.",
+      "attributes": {
+        "depth": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "h6": {
+      "name": "h6",
+      "kind": "block",
+      "description": "Generated from GuideNH h6 compiler source.",
+      "attributes": {
+        "depth": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "hr": {
+      "name": "hr",
+      "kind": "block",
+      "description": "Generated from GuideNH hr compiler source.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "ImageAnnotation": {
+      "name": "ImageAnnotation",
+      "kind": "block",
+      "description": "Generated from GuideNH floating image annotation support.",
+      "attributes": {
+        "border": {
+          "type": "boolean",
+          "valueStyle": "bare"
+        },
+        "borderColor": {
+          "type": "color",
+          "valueStyle": "string"
+        },
+        "borderThickness": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "h": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "sound": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "src": {
+          "type": "resource",
+          "valueStyle": "string"
+        },
+        "trigger": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "volume": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "w": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "x": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "y": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "img": {
+      "name": "img",
+      "kind": "inline",
+      "description": "Generated from GuideNH img compiler source.",
+      "attributes": {
+        "alt": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "src": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "title": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "ImportPonder": {
+      "name": "ImportPonder",
+      "kind": "any",
+      "description": "Imports a GuideNH Ponder timeline JSON. Supports camera/annotation playback, legacy blockChanges, and the newer worldActions timeline layer.",
+      "attributes": {
+        "src": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "ImportStructure": {
+      "name": "ImportStructure",
+      "kind": "scene",
+      "description": "Imports an SNBT or NBT structure resource.",
+      "attributes": {
+        "formed": {
+          "type": "boolean",
+          "valueStyle": "expression",
+          "description": "Whether imported structure controllers should be treated as formed during preview sync. Defaults to false."
+        },
+        "offsetX": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "offsetY": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "offsetZ": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "src": {
+          "type": "resource",
+          "valueStyle": "string",
+          "required": true,
+          "description": "Structure resource path."
+        },
+        "x": {
+          "type": "number",
+          "valueStyle": "string",
+          "description": "X offset."
+        },
+        "y": {
+          "type": "number",
+          "valueStyle": "string",
+          "description": "Y offset."
+        },
+        "z": {
+          "type": "number",
+          "valueStyle": "string",
+          "description": "Z offset."
+        }
+      },
+      "children": [],
+      "snippets": [
+        "guidenh.importStructure"
+      ]
+    },
+    "ImportStructureLib": {
+      "name": "ImportStructureLib",
+      "kind": "any",
+      "description": "Generated from GuideNH ImportStructureLib compiler source.",
+      "attributes": {
+        "channel": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "controller": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "facing": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "flip": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "formed": {
+          "type": "boolean",
+          "valueStyle": "expression",
+          "description": "Whether imported StructureLib controllers should be treated as formed during preview sync. Defaults to false."
+        },
+        "name": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "offsetX": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "offsetY": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "offsetZ": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "piece": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "rotation": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "IsometricCamera": {
+      "name": "IsometricCamera",
+      "kind": "any",
+      "description": "Generated from GuideNH IsometricCamera compiler source.",
+      "attributes": {
+        "pitch": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "roll": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "yaw": {
+          "type": "number",
+          "valueStyle": "expression"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "ItemGrid": {
+      "name": "ItemGrid",
+      "kind": "block",
+      "description": "Generated from GuideNH ItemGrid compiler source.",
+      "attributes": {
+        "id": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "ore": {
+          "type": "ore",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "ItemImage": {
+      "name": "ItemImage",
+      "kind": "inline",
+      "description": "Generated from GuideNH ItemImage compiler source.",
+      "attributes": {
+        "align": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "format": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "id": {
+          "type": "string",
+          "valueStyle": "string",
+          "requiredWhenMissing": [
+            "ore"
+          ]
+        },
+        "label": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "labelYOffset": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "nbt": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "noTooltip": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "ore": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "scale": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "show_tooltip": {
+          "type": "boolean",
+          "valueStyle": "string"
+        },
+        "showIcon": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "showTooltip": {
+          "type": "boolean",
+          "valueStyle": "string"
+        },
+        "tooltip": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yOffset": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "ItemLink": {
+      "name": "ItemLink",
+      "kind": "inline",
+      "description": "Item tooltip link with optional guide navigation.",
+      "attributes": {
+        "id": {
+          "type": "item",
+          "valueStyle": "string",
+          "description": "Item id."
+        },
+        "linksTo": {
+          "type": "page",
+          "valueStyle": "string",
+          "description": "Override page link target."
+        },
+        "noTooltip": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "ore": {
+          "type": "ore",
+          "valueStyle": "string",
+          "description": "Ore dictionary name."
+        },
+        "scale": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "show_tooltip": {
+          "type": "boolean",
+          "valueStyle": "string",
+          "description": "Whether hover tooltip is shown."
+        },
+        "showIcon": {
+          "type": "string",
+          "valueStyle": "string",
+          "description": "Icon side, or a truthy value for the right side."
+        },
+        "showText": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "showTooltip": {
+          "type": "boolean",
+          "valueStyle": "string",
+          "description": "Whether hover tooltip is shown."
+        }
+      },
+      "children": [],
+      "snippets": [
+        "guidenh.itemLink"
+      ]
+    },
+    "kbd": {
+      "name": "kbd",
+      "kind": "inline",
+      "description": "Generated from GuideNH kbd compiler source.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "KeyBind": {
+      "name": "KeyBind",
+      "kind": "inline",
+      "description": "Generated from GuideNH KeyBind compiler source.",
+      "attributes": {
+        "action": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "id": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "Latex": {
+      "name": "Latex",
+      "kind": "any",
+      "description": "Generated from GuideNH Latex compiler source.",
+      "attributes": {
+        "color": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "formula": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "offsetX": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "offsetY": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "scale": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "showTooltip": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "sourceScale": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "tooltip": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "valign": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "li": {
+      "name": "li",
+      "kind": "block",
+      "description": "Generated from GuideNH li compiler source.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "LineAnnotation": {
+      "name": "LineAnnotation",
+      "kind": "any",
+      "description": "Generated from GuideNH LineAnnotation compiler source.",
+      "attributes": {
+        "alwaysOnTop": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "arrow": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "color": {
+          "type": "color",
+          "valueStyle": "string"
+        },
+        "from": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "index": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "pointColor": {
+          "type": "color",
+          "valueStyle": "string"
+        },
+        "points": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "pointSize": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "show": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "showPoints": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "showWhenChannels": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showWhenStructure": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showWhenTier": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "size": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "thickness": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "to": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "LineChart": {
+      "name": "LineChart",
+      "kind": "chart",
+      "description": "Generated from GuideNH LineChart compiler source.",
+      "attributes": {
+        "background": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "border": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "categories": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "cornerLegend": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "cornerLegendBackground": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "cornerLegendHeight": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "cornerLegendWidth": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "height": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "labelColor": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "labelPosition": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "legend": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "numericX": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "showPoints": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "showXGrid": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "showYGrid": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "title": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "titleColor": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "xAxisLabel": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "xAxisMax": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "xAxisMin": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "xAxisStep": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "xAxisTickFormat": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "xAxisUnit": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "xGridColor": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yAxisLabel": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yAxisMax": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "yAxisMin": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "yAxisStep": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "yAxisTickFormat": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yAxisUnit": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yGridColor": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [
+        "Series"
+      ],
+      "snippets": []
+    },
+    "LinePoint": {
+      "name": "LinePoint",
+      "kind": "any",
+      "description": "Generated from GuideNH line annotation point styling support.",
+      "attributes": {
+        "color": {
+          "type": "color",
+          "valueStyle": "string"
+        },
+        "index": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "show": {
+          "type": "boolean",
+          "valueStyle": "bare"
+        },
+        "size": {
+          "type": "number",
+          "valueStyle": "expression"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "LineSeries": {
+      "name": "LineSeries",
+      "kind": "chart",
+      "description": "Generated from GuideNH LineSeries chart child parser source.",
+      "attributes": {
+        "color": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "data": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "icon": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "iconImage": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "name": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "tooltip": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "mark": {
+      "name": "mark",
+      "kind": "inline",
+      "description": "Generated from GuideNH mark compiler source.",
+      "attributes": {
+        "color": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "Mermaid": {
+      "name": "Mermaid",
+      "kind": "block",
+      "description": "Generated from GuideNH Mermaid compiler source.",
+      "attributes": {
+        "height": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "src": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
+      "children": [
+        "NodeContent"
+      ],
+      "snippets": []
+    },
+    "NodeContent": {
+      "name": "NodeContent",
+      "kind": "block",
+      "description": "Generated from GuideNH Mermaid rich node content support.",
+      "attributes": {
+        "id": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "ol": {
+      "name": "ol",
+      "kind": "block",
+      "description": "Generated from GuideNH ol compiler source.",
+      "attributes": {
+        "start": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "p": {
+      "name": "p",
+      "kind": "block",
+      "description": "Generated from GuideNH p compiler source.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "Particle": {
+      "name": "Particle",
+      "kind": "any",
+      "description": "Generated from GuideNH Particle compiler source.",
+      "attributes": {
+        "name": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "particle": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "size": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "x": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "y": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "z": {
+          "type": "number",
+          "valueStyle": "expression"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "PieChart": {
+      "name": "PieChart",
+      "kind": "chart",
+      "description": "Generated from GuideNH PieChart compiler source.",
+      "attributes": {
+        "background": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "border": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "clockwise": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "cornerLegend": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "cornerLegendBackground": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "cornerLegendHeight": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "cornerLegendWidth": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "height": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "labelColor": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "labelPosition": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "legend": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "startAngle": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "title": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "titleColor": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
+      "children": [
+        "Slice"
+      ],
+      "snippets": []
+    },
+    "PieInset": {
+      "name": "PieInset",
+      "kind": "chart",
+      "description": "Generated from GuideNH PieInset chart child parser source.",
+      "attributes": {
+        "direction": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "height": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "position": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "size": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "startAngleDeg": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "title": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "titleColor": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "expression"
+        }
+      },
+      "children": [
+        "Slice"
+      ],
+      "snippets": []
+    },
+    "PlaceBlock": {
+      "name": "PlaceBlock",
+      "kind": "any",
+      "description": "Generated from GuideNH PlaceBlock compiler source.",
+      "attributes": {
+        "dx": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "dy": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "dz": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "formed": {
+          "type": "boolean",
+          "valueStyle": "expression",
+          "description": "Whether placed controllers should be treated as formed during preview sync. Defaults to false."
+        },
+        "id": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "nbt": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "x": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "y": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "z": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "PlayerName": {
+      "name": "PlayerName",
+      "kind": "inline",
+      "description": "Generated from GuideNH PlayerName compiler source.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "PlaySound": {
+      "name": "PlaySound",
+      "kind": "any",
+      "description": "Generated from GuideNH PlaySound compiler source.",
+      "attributes": {
+        "cooldown": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "minVolume": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "pitch": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "radius": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "showWhenChannels": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showWhenStructure": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showWhenTier": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "sound": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "src": {
+          "type": "resource",
+          "valueStyle": "string"
+        },
+        "trigger": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "volume": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "x": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "y": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "z": {
+          "type": "number",
+          "valueStyle": "expression"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "Plot": {
+      "name": "Plot",
+      "kind": "block",
+      "description": "Generated from GuideNH function graph plot support.",
+      "attributes": {
+        "atX": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "atY": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "autoPointColor": {
+          "type": "color",
+          "valueStyle": "string"
+        },
+        "autoPointLabel": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "color": {
+          "type": "color",
+          "valueStyle": "string"
+        },
+        "domain": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "expr": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "inverse": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "label": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "pointEveryX": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "pointEveryY": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showFunction": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "showValues": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "tooltip": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "x": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "y": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "Point": {
+      "name": "Point",
+      "kind": "chart",
+      "description": "Generated from GuideNH point child parser source.",
+      "attributes": {
+        "atX": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "atY": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "color": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "label": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "plot": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "x": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "y": {
+          "type": "number",
+          "valueStyle": "expression"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "pre": {
+      "name": "pre",
+      "kind": "block",
+      "description": "Generated from GuideNH pre compiler source.",
+      "attributes": {
+        "lang": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "meta": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "QuestCard": {
+      "name": "QuestCard",
+      "kind": "block",
+      "description": "Generated from GuideNH QuestCard compiler source.",
+      "attributes": {
+        "id": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "show_desc": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "show_tooltip": {
+          "type": "boolean",
+          "valueStyle": "string"
+        },
+        "showTooltip": {
+          "type": "boolean",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "QuestLink": {
+      "name": "QuestLink",
+      "kind": "inline",
+      "description": "Generated from GuideNH QuestLink compiler source.",
+      "attributes": {
+        "id": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "show_tooltip": {
+          "type": "boolean",
+          "valueStyle": "string"
+        },
+        "showTooltip": {
+          "type": "boolean",
+          "valueStyle": "string"
+        },
+        "text": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "Recipe": {
+      "name": "Recipe",
+      "kind": "block",
+      "description": "Renders a recipe by id.",
+      "attributes": {
+        "align": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "fallbackText": {
+          "type": "string",
+          "valueStyle": "string",
+          "description": "Fallback text."
+        },
+        "float": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "handlerId": {
+          "type": "string",
+          "valueStyle": "string",
+          "description": "Recipe handler id."
+        },
+        "handlerName": {
+          "type": "string",
+          "valueStyle": "string",
+          "description": "Recipe handler name."
+        },
+        "handlerOrder": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "id": {
+          "type": "item",
+          "valueStyle": "string",
+          "required": true,
+          "description": "Recipe output or recipe id."
+        },
+        "input": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "limit": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "output": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "recipeIndex": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "wrap": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": [
+        "guidenh.recipe"
+      ]
+    },
+    "RecipeFor": {
+      "name": "RecipeFor",
+      "kind": "block",
+      "description": "Generated from GuideNH RecipeFor compiler source.",
+      "attributes": {
+        "align": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "fallbackText": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "float": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "handlerId": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "handlerName": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "handlerOrder": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "id": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "input": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "limit": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "output": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "recipeIndex": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "wrap": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "RecipesFor": {
+      "name": "RecipesFor",
+      "kind": "block",
+      "description": "Generated from GuideNH RecipesFor compiler source.",
+      "attributes": {
+        "align": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "fallbackText": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "float": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "handlerId": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "handlerName": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "handlerOrder": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "id": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "input": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "limit": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "output": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "recipeIndex": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "wrap": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "RecipesUsage": {
+      "name": "RecipesUsage",
+      "kind": "block",
+      "description": "Generated from GuideNH RecipesUsage compiler source.",
+      "attributes": {
+        "align": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "fallbackText": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "float": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "handlerId": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "handlerName": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "handlerOrder": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "id": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "input": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "limit": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "output": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "recipeIndex": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "wrap": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "RecipeUsage": {
+      "name": "RecipeUsage",
+      "kind": "block",
+      "description": "Generated from GuideNH RecipeUsage compiler source.",
+      "attributes": {
+        "align": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "fallbackText": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "float": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "handlerId": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "handlerName": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "handlerOrder": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "id": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "input": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "limit": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "output": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "recipeIndex": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "wrap": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "RemoveBlocks": {
+      "name": "RemoveBlocks",
+      "kind": "any",
+      "description": "Generated from GuideNH RemoveBlocks compiler source.",
+      "attributes": {
+        "id": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "RemoveEntity": {
+      "name": "RemoveEntity",
+      "kind": "any",
+      "description": "Generated from GuideNH RemoveEntity compiler source.",
+      "attributes": {
+        "sceneEntityId": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "unmount": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "ReplaceBlock": {
+      "name": "ReplaceBlock",
+      "kind": "any",
+      "description": "Generated from GuideNH ReplaceBlock compiler source.",
+      "attributes": {
+        "dx": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "dy": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "dz": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "formed": {
+          "type": "boolean",
+          "valueStyle": "expression",
+          "description": "Whether replacement result controllers should be treated as formed during preview sync. Defaults to false."
+        },
+        "from": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "from_nbt": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "to": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "to_nbt": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "x": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "y": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "z": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "Row": {
+      "name": "Row",
+      "kind": "block",
+      "description": "Generated from GuideNH Row compiler source.",
+      "attributes": {
+        "alignItems": {
+          "type": "enum",
+          "valueStyle": "string"
+        },
+        "fullWidth": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "gap": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "ScatterChart": {
+      "name": "ScatterChart",
+      "kind": "chart",
+      "description": "Generated from GuideNH ScatterChart compiler source.",
+      "attributes": {
+        "background": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "border": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "cornerLegend": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "cornerLegendBackground": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "cornerLegendHeight": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "cornerLegendWidth": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "height": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "labelColor": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "labelPosition": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "legend": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showXGrid": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "showYGrid": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "title": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "titleColor": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "xAxisLabel": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "xAxisMax": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "xAxisMin": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "xAxisStep": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "xAxisTickFormat": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "xAxisUnit": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "xGridColor": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yAxisLabel": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yAxisMax": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "yAxisMin": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "yAxisStep": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "yAxisTickFormat": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yAxisUnit": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "yGridColor": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [
+        "Series"
+      ],
+      "snippets": []
+    },
+    "Scene": {
+      "name": "Scene",
+      "kind": "block",
+      "description": "Generated from GuideNH Scene compiler source.",
+      "attributes": {
+        "allowLayerSlider": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "buttonEnabled": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "centerX": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "centerY": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "centerZ": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "corner": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "count": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "dock": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "filter": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "filterMode": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "gridButtonEnabled": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "height": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "id": {
+          "type": "item",
+          "valueStyle": "string"
+        },
+        "interactive": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "item": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "maxHeight": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "maxWidth": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "mode": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "offsetX": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "offsetY": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "ore": {
+          "type": "ore",
+          "valueStyle": "string"
+        },
+        "perspective": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "rotateX": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "rotateY": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "rotateZ": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "showBackground": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "showGrid": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "showNames": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "visible": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "zoom": {
+          "type": "number",
+          "valueStyle": "expression"
+        }
+      },
+      "children": [
+        "Block",
+        "BlockAnnotation",
+        "BlockAnnotationTemplate",
+        "BlockStats",
+        "BoxAnnotation",
+        "DiamondAnnotation",
+        "Entity",
+        "ImportPonder",
+        "ImportStructure",
+        "ImportStructureLib",
+        "IsometricCamera",
+        "LineAnnotation",
+        "Particle",
+        "PlaceBlock",
+        "PlaySound",
+        "RemoveBlocks",
+        "RemoveEntity",
+        "ReplaceBlock",
+        "TextAnnotation",
+        "Weather"
+      ],
+      "snippets": []
+    },
+    "Series": {
+      "name": "Series",
+      "kind": "chart",
+      "description": "Generated from GuideNH Series chart child parser source.",
+      "attributes": {
+        "color": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "data": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "icon": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "iconImage": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "name": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "points": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "tooltip": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [
+        "Point"
+      ],
+      "snippets": []
+    },
+    "Slice": {
+      "name": "Slice",
+      "kind": "chart",
+      "description": "Generated from GuideNH Slice chart child parser source.",
+      "attributes": {
+        "color": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "icon": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "iconImage": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "label": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "name": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "tooltip": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "value": {
+          "type": "number",
+          "valueStyle": "expression"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "SoundArea": {
+      "name": "SoundArea",
+      "kind": "block",
+      "description": "Generated from GuideNH floating image sound area support.",
+      "attributes": {
+        "cooldown": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "h": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "minVolume": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "pitch": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "radius": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "sound": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "src": {
+          "type": "resource",
+          "valueStyle": "string"
+        },
+        "trigger": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "volume": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "w": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "x": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "y": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "SoundLink": {
+      "name": "SoundLink",
+      "kind": "inline",
+      "description": "Generated from GuideNH SoundLink compiler source.",
+      "attributes": {
+        "cooldown": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "minVolume": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "pitch": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "radius": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "sound": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "src": {
+          "type": "resource",
+          "valueStyle": "string"
+        },
+        "volume": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "x": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "y": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "z": {
+          "type": "number",
+          "valueStyle": "expression"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "Special": {
+      "name": "Special",
+      "kind": "block",
+      "description": "Generated from GuideNH Special compiler source.",
+      "attributes": {
+        "language": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "name": {
+          "type": "string",
+          "valueStyle": "string",
+          "values": [
+            "SpecialPages",
+            "AllPages",
+            "AllPagesWithPrefix",
+            "Categories",
+            "CategoryTree",
+            "DisambiguationPages",
+            "ExternalLinksSearch",
+            "PagesLinkingToDisambiguationPages",
+            "PagesWithPageProperty",
+            "PagesWithBadges",
+            "DoubleRedirects",
+            "LintErrors",
+            "LongPages",
+            "ShortPages",
+            "UncategorizedPages",
+            "PagesNotConnectedToItems",
+            "UnusedFiles",
+            "OverriddenPages",
+            "FileList",
+            "GlobalFileUsage",
+            "MediaStatistics",
+            "DownloadGuideNHExtension",
+            "AllTranslations",
+            "LanguageStatistics",
+            "PageTranslation",
+            "SearchTranslations",
+            "TranslationStatistics",
+            "Contribute"
+          ]
+        },
+        "page": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "prefix": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "query": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "rows": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "Spoiler": {
+      "name": "Spoiler",
+      "kind": "inline",
+      "description": "Inline spoiler text revealed on hover.",
+      "attributes": {},
+      "children": [],
+      "snippets": [
+        "guidenh.spoiler"
+      ]
+    },
+    "strong": {
+      "name": "strong",
+      "kind": "inline",
+      "description": "Generated from GuideNH strong compiler source.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "Structure": {
+      "name": "Structure",
+      "kind": "block",
+      "description": "Generated from GuideNH Structure compiler source.",
+      "attributes": {
+        "height": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "sub": {
+      "name": "sub",
+      "kind": "inline",
+      "description": "Generated from GuideNH sub compiler source.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "SubPages": {
+      "name": "SubPages",
+      "kind": "block",
+      "description": "Generated from GuideNH SubPages compiler source.",
+      "attributes": {
+        "alphabetical": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "id": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "summary": {
+      "name": "summary",
+      "kind": "block",
+      "description": "Generated from GuideNH details summary support.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "sup": {
+      "name": "sup",
+      "kind": "inline",
+      "description": "Generated from GuideNH sup compiler source.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "Tab": {
+      "name": "Tab",
+      "kind": "block",
+      "description": "Generated from GuideNH ContentTabs tab child support.",
+      "attributes": {
+        "title": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "table": {
+      "name": "table",
+      "kind": "block",
+      "description": "Generated from GuideNH table compiler source.",
+      "attributes": {
+        "align": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "content": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "TextAnnotation": {
+      "name": "TextAnnotation",
+      "kind": "any",
+      "description": "Generated from GuideNH TextAnnotation compiler source.",
+      "attributes": {
+        "backgroundAlpha": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "color": {
+          "type": "color",
+          "valueStyle": "string"
+        },
+        "connectorLength": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "connectorOffset": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "connectorSide": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "hlMaxX": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "hlMaxY": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "hlMaxZ": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "hlMinX": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "hlMinY": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "hlMinZ": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "independent": {
+          "type": "boolean",
+          "valueStyle": "expression"
+        },
+        "maxWidth": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "pos": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showWhenChannels": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showWhenStructure": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "showWhenTier": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "text": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "textKey": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "x": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "y": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "yOffset": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "z": {
+          "type": "number",
+          "valueStyle": "expression"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "Tooltip": {
+      "name": "Tooltip",
+      "kind": "any",
+      "description": "Generated from GuideNH Tooltip compiler source.",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "u": {
+      "name": "u",
+      "kind": "inline",
+      "description": "Generated from GuideNH u compiler source.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "ul": {
+      "name": "ul",
+      "kind": "block",
+      "description": "Generated from GuideNH ul compiler source.",
+      "attributes": {
+        "start": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "Usage": {
+      "name": "Usage",
+      "kind": "block",
+      "description": "Generated from GuideNH Usage compiler source.",
+      "attributes": {
+        "align": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "fallbackText": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "float": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "handlerId": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "handlerName": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "handlerOrder": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "id": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "input": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "limit": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "output": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "recipeIndex": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "wrap": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "wavy": {
+      "name": "wavy",
+      "kind": "inline",
+      "description": "Generated from GuideNH wavy compiler source.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "Weather": {
+      "name": "Weather",
+      "kind": "any",
+      "description": "Generated from GuideNH Weather compiler source.",
+      "attributes": {
+        "density": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "type": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "weather": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "x": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "z": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    }
+  }
+}
