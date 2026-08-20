@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "snippets": {
+    "guidenh.gameScene": {
+      "prefix": "GameScene",
+      "body": [
+        "<GameScene width=\"${1:220}\" height=\"${2:150}\" interactive={${3:true}}>",
+        "  <Block id=\"${4:minecraft:stone}\" />",
+        "</GameScene>"
+      ],
+      "description": "Insert a GuideNH GameScene."
+    },
+    "guidenh.block": {
+      "prefix": "Block",
+      "body": ["<Block id=\"${1:minecraft:stone}\" />"],
+      "description": "Insert a scene block."
+    },
+    "guidenh.importStructure": {
+      "prefix": "ImportStructure",
+      "body": ["<ImportStructure src=\"${1:./structure.snbt}\" />"],
+      "description": "Import a structure into a GameScene."
+    },
+    "guidenh.importStructureLib": {
+      "prefix": "ImportStructureLib",
+      "body": [
+        "<ImportStructureLib controller=\"${1:gregtech:gt.blockmachines:2741}\"${2: formed={true}} />"
+      ],
+      "description": "Insert a StructureLib scene import."
+    },
+    "guidenh.gtBlock": {
+      "prefix": "GTBlock",
+      "body": [
+        "<Block id=\"${1:gregtech:gt.blockmachines:2741}\"${2: formed={true}} />"
+      ],
+      "description": "Insert a GT controller scene block."
+    },
+    "guidenh.itemLink": {
+      "prefix": "ItemLink",
+      "body": ["<ItemLink id=\"${1:minecraft:diamond}\" />"],
+      "description": "Insert an item link."
+    },
+    "guidenh.recipe": {
+      "prefix": "Recipe",
+      "body": ["<Recipe id=\"${1:minecraft:stone}\" />"],
+      "description": "Insert a recipe."
+    }
+  }
+}

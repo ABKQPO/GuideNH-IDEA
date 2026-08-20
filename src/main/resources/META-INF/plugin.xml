@@ -5,32 +5,64 @@
 
     <!-- Public plugin name should be written in Title Case.
      Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-name -->
-    <name>GuideNH-IDEA</name>
+    <name>GuideNH</name>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor url="https://www.yourcompany.com">YourCompany</vendor>
+    <vendor url="https://github.com/GTNewHorizons">GT New Horizons</vendor>
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-description -->
-    <description><![CDATA[
-        Enter short description for your plugin here.<br>
-        <em>most HTML tags may be used</em>
-        ]]></description>
+    <description><![CDATA[GuideNH Markdown language support for IntelliJ IDEA: diagnostics, completion, navigation, references, hover documentation, and runtime bridge integration.]]></description>
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
-    <depends>com.intellij.modules.lsp</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.xml</depends>
     <depends>org.jetbrains.kotlin</depends>
+    <depends>org.intellij.plugins.markdown</depends>
 
     <resource-bundle>messages.MyMessageBundle</resource-bundle>
 
     <!-- Extensions defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="MyToolWindow" factoryClass="com.hfstudio.MyToolWindowFactory"
-                    icon="AllIcons.Toolwindows.ToolWindowPalette"/>
+        <applicationService serviceImplementation="com.hfstudio.guidenh.GuideNhRuntimeBridgeService"/>
+        <applicationService serviceImplementation="com.hfstudio.guidenh.GuideNhItemInlayService"/>
+        <projectService serviceImplementation="com.hfstudio.guidenh.GuideNhSchemaService"/>
+        <projectService serviceImplementation="com.hfstudio.guidenh.GuideNhWorkspaceIndex"/>
+        <projectService serviceImplementation="com.hfstudio.guidenh.GuideNhRuntimeSemanticIndex"/>
+        <annotator language="Markdown" implementationClass="com.hfstudio.guidenh.GuideNhAnnotator"/>
+        <lang.inspectionSuppressor language="Markdown" implementationClass="com.hfstudio.guidenh.GuideNhInspectionSuppressor"/>
+        <lang.inspectionSuppressor language="HTML" implementationClass="com.hfstudio.guidenh.GuideNhInspectionSuppressor"/>
+        <lang.inspectionSuppressor language="XML" implementationClass="com.hfstudio.guidenh.GuideNhInspectionSuppressor"/>
+        <externalAnnotator language="Markdown" implementationClass="com.hfstudio.guidenh.GuideNhRuntimeExternalAnnotator"/>
+        <completion.contributor language="Markdown" implementationClass="com.hfstudio.guidenh.GuideNhCompletionContributor"/>
+        <psi.referenceContributor language="Markdown" implementation="com.hfstudio.guidenh.GuideNhReferenceContributor"/>
+        <referencesSearch implementation="com.hfstudio.guidenh.GuideNhReferencesSearchExecutor"/>
+        <findUsagesProvider language="Markdown" implementationClass="com.hfstudio.guidenh.GuideNhFindUsagesProvider"/>
+        <lang.documentationProvider implementationClass="com.hfstudio.guidenh.GuideNhDocumentationProvider"/>
+        <lang.structureViewBuilderProvider implementationClass="com.hfstudio.guidenh.GuideNhStructureViewProvider"/>
+        <codeInsight.lineMarkerProvider language="Markdown" implementationClass="com.hfstudio.guidenh.GuideNhItemLineMarkerProvider"/>
+        <enterHandlerDelegate implementationClass="com.hfstudio.guidenh.GuideNhEnterHandler"/>
+        <typedHandler implementationClass="com.hfstudio.guidenh.GuideNhTypedHandler"/>
+        <toolWindow id="GuideNH" factoryClass="com.hfstudio.MyToolWindowFactory" icon="AllIcons.Toolwindows.ToolWindowPalette"/>
+        <gotoSymbolContributor implementationClass="com.hfstudio.guidenh.GuideNhWorkspaceSymbolContributor"/>
+        <customFileDropHandler implementationClass="com.hfstudio.guidenh.GuideNhItemDropHandler"/>
+        <postStartupActivity implementation="com.hfstudio.guidenh.GuideNhStartupActivity"/>
     </extensions>
+    <actions>
+        <action id="GuideNH.ConnectRuntime" class="com.hfstudio.guidenh.ConnectRuntimeAction" text="连接 GuideNH 运行时"/>
+        <action id="GuideNH.DisconnectRuntime" class="com.hfstudio.guidenh.DisconnectRuntimeAction" text="断开 GuideNH 运行时"/>
+        <action id="GuideNH.ValidateDocument" class="com.hfstudio.guidenh.ValidateDocumentAction" text="验证 GuideNH 文档"/>
+        <action id="GuideNH.PickItemStack" class="com.hfstudio.guidenh.PickItemStackAction" text="选择 GuideNH 物品栈"/>
+        <action id="GuideNH.GenerateSchema" class="com.hfstudio.guidenh.GenerateSchemaAction" text="生成 GuideNH Schema"/>
+    </actions>
+    <applicationConfigurable parentId="tools" instance="com.hfstudio.guidenh.GuideNhSettingsConfigurable" displayName="GuideNH"/>
     <extensions defaultExtensionNs="org.jetbrains.kotlin">
         <supportsKotlinPluginMode supportsK2="true"/>
+    </extensions>
+    <extensions defaultExtensionNs="org.intellij.markdown">
+        <fenceGeneratingProvider implementation="com.hfstudio.guidenh.GuideNhFencePreviewProvider"/>
+        <browserPreviewExtensionProvider implementation="com.hfstudio.guidenh.GuideNhMarkdownPreviewExtensionProvider"/>
     </extensions>
 </idea-plugin>

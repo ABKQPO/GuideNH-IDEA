@@ -1,5 +1,20 @@
 # GuideNH-IDEA
 
+Kotlin IntelliJ IDEA support for GuideNH Markdown authoring. The plugin keeps the Markdown editor intact while adding GuideNH-aware parsing and workspace semantics.
+
+Implemented editor features include schema diagnostics and quick fixes, project-local Kotlin schema extraction, page/resource/item/ore references, definitions, Find Usages, hover documentation, GuideNH-aware completion and indentation, workspace symbols, locale-aware indexing, IntelliJ Live Template snippets, runtime bridge actions/status, runtime semantic/preview adapters, viewport-bounded item PNG inlays, and native item picker/drop handling. The picker previews and writes ItemStack ids with meta/NBT/count controls when the target schema supports them.
+
+The runtime bridge uses GuideNH protocol version 1 (`hello`, `capabilities`, `semantic.query`, `document.validate`, `preview.search`, and `preview.resolve`) with local-host validation, token configuration, reconnect, bounded envelopes, capability negotiation, and guarded semantic/diagnostic payloads by default.
+
+Build locally with:
+
+```powershell
+.\gradlew.bat compileKotlin
+.\gradlew.bat buildPlugin
+```
+
+The generated plugin ZIP is written to `build/distributions/`. The plugin has no GUI Designer forms, so IntelliJ bytecode instrumentation is disabled and no Java compiler Ant dependency is required. CI builds the plugin, runs verification, and uploads `plugin-distribution` on pull requests and pushes to `main`.
+
 [![Twitter Follow](https://img.shields.io/badge/follow-%40JBPlatform-1DA1F2?logo=twitter)](https://twitter.com/JBPlatform)
 [![Developers Forum](https://img.shields.io/badge/JetBrains%20Platform-Join-blue)][jb:forum]
 
@@ -31,9 +46,9 @@ git push -u origin main
 
 This repository implements an IntelliJ Platform plugin.
 
-## Demo Functionality
+## Current Functionality
 
-The sample plugin adds a `My Tool Window` tool window with a simple functionality of shuffling a random number.
+The plugin adds a GuideNH tool window with runtime status/actions and integrates GuideNH diagnostics, completion, navigation, references, hover documentation, and structure symbols into Markdown editing.
 
 ## Plugin structure
 
@@ -84,18 +99,13 @@ It applies three Gradle plugins:
 The `intellijPlatform` dependencies block selects the IDE to compile against:
 
 ```kotlin
-intellijIdea("2025.3.5")
+intellijIdea("2026.1.5")
 ```
 
 See [Target Versions][docs:target-version] for more information.
 
-The `intellijPlatform` dependencies block also contains a dependency on the platform testing framework:
-
-```kotlin
-testFramework(TestFrameworkType.Platform)
-```
-
-See [Testing][docs:testing] for more information
+This project currently has no automated test sources, so it intentionally does not declare the IntelliJ Platform
+test framework. The standard `test` task remains usable and reports `NO-SOURCE` until tests are added.
 
 ## Plugin configuration file
 
@@ -124,7 +134,7 @@ configurations* that expose corresponding Gradle tasks:
 | Configuration name  | Description                                                                                                                                                                           |
 |---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Run IDE with Plugin | Runs [`:runIde`][docs:intellij-platform-gradle-plugin-runIde] IntelliJ Platform Gradle Plugin task. Use the *Debug* icon for plugin debugging.                                        |
-| Run Tests           | Runs [`:check`][gradle:lifecycle-tasks] Gradle task.                                                                                                                                  |
+| Run Validation      | Runs [`:check`][gradle:lifecycle-tasks]. The test task reports `NO-SOURCE` until automated tests are added.                                                                      |
 | Run Verifications   | Runs [`:verifyPlugin`][docs:intellij-platform-gradle-plugin-verifyPlugin] IntelliJ Platform Gradle Plugin task to check the plugin compatibility against the specified IntelliJ IDEs. |
 
 > [!NOTE]
@@ -151,7 +161,7 @@ The project includes [GitHub Actions][https://docs.github.com/en/actions] workfl
 
 | Workflow                                 | Trigger        | Description                                                     |
 |------------------------------------------|----------------|-----------------------------------------------------------------|
-| [Build](.github/workflows/build.yml)     | Push / PR      | Builds, tests, and verifies the plugin; creates a draft release |
+| [Build](.github/workflows/build.yml)     | Push / PR      | Builds, validates, and verifies the plugin; creates a draft release |
 | [Release](.github/workflows/release.yml) | GitHub Release | Publishes the plugin to JetBrains Marketplace                   |
 
 ### GitHub issue templates

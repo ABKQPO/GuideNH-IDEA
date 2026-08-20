@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "inlineMarkers": {
+    "highlight": { "open": "==", "close": "==", "description": "Inline highlight." },
+    "underline": { "open": "++", "close": "++", "description": "Straight underline." },
+    "wavyUnderline": { "open": "^^", "close": "^^", "description": "Wavy underline." },
+    "dottedUnderline": { "open": "::", "close": "::", "description": "Dotted underline." }
+  },
+  "fencedCodeBlocks": {
+    "csv": { "description": "Runtime CSV table." },
+    "mermaid": { "description": "Runtime Mermaid mindmap when supported." },
+    "filetree": { "description": "Runtime file tree." },
+    "funcgraph": { "description": "Runtime function graph." }
+  }
+}

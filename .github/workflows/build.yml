@@ -1,6 +1,6 @@
-# GitHub Actions workflow for building, testing, verifying, and preparing plugin release drafts:
+# GitHub Actions workflow for building, validating, verifying, and preparing plugin release drafts:
 # - Build the plugin ZIP with the 'buildPlugin' task and upload it as a workflow artifact.
-# - Run the 'check' task and upload test reports on failure.
+# - Run Gradle checks. This project deliberately has no automated test sources.
 # - Run the 'verifyPlugin' task and upload Plugin Verifier reports.
 # - Create a draft GitHub release on non-pull-request runs.
 #
@@ -60,10 +60,12 @@ jobs:
         with:
           name: plugin-distribution
           path: ./build/distributions/*.zip
+          if-no-files-found: error
+          retention-days: 14
 
-  # Run tests and upload test reports on failure
-  test:
-    name: Test
+  # Run Gradle validation. The test task is valid and reports NO-SOURCE until tests are added.
+  validate:
+    name: Validate
     needs: [ build ]
     runs-on: ubuntu-latest
     steps:
@@ -92,17 +94,8 @@ jobs:
         with:
           cache-read-only: true
 
-      # Run tests
-      - name: Run Tests
+      - name: Run Gradle checks
         run: ./gradlew check
-
-      # Collect Tests Result of failed tests
-      - name: Collect Tests Result
-        if: ${{ failure() }}
-        uses: actions/upload-artifact@v7
-        with:
-          name: tests-result
-          path: ${{ github.workspace }}/build/reports/tests
 
   # Run plugin structure verification along with IntelliJ Plugin Verifier
   verify:
@@ -152,7 +145,7 @@ jobs:
   releaseDraft:
     name: Release draft
     if: github.event_name != 'pull_request'
-    needs: [ build, test, verify ]
+    needs: [ build, validate, verify ]
     runs-on: ubuntu-latest
     permissions:
       contents: write

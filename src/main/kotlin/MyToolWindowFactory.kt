@@ -7,7 +7,8 @@ import com.intellij.ui.components.JBLabel
 import com.intellij.ui.components.JBPanel
 import com.intellij.ui.content.ContentFactory
 import javax.swing.JButton
-import kotlin.random.Random
+import javax.swing.BoxLayout
+import com.hfstudio.guidenh.GuideNhRuntimeBridgeService
 
 class MyToolWindowFactory : ToolWindowFactory {
     override fun shouldBeAvailable(project: Project) = true
@@ -20,16 +21,14 @@ class MyToolWindowFactory : ToolWindowFactory {
 
     class MyToolWindow {
         private val content = JBPanel<JBPanel<*>>().apply {
-            val label = JBLabel(MyMessageBundle.message("toolwindow.MyToolWindow.number.label", "?"))
-
+            layout = BoxLayout(this, BoxLayout.Y_AXIS)
+            val label = JBLabel()
+            fun refresh() { label.text = MyMessageBundle.message("toolwindow.runtime", GuideNhRuntimeBridgeService.get().status.state) }
+            refresh()
             add(label)
-            add(JButton(MyMessageBundle.message("toolwindow.MyToolWindow.shuffle.button")).apply {
-                addActionListener {
-                    label.text = MyMessageBundle.message(
-                        "toolwindow.MyToolWindow.number.label", Random(System.currentTimeMillis()).nextInt(1000)
-                    )
-                }
-            })
+            add(JButton(MyMessageBundle.message("toolwindow.refresh")).apply { addActionListener { refresh() } })
+            add(JButton(MyMessageBundle.message("toolwindow.disconnect")).apply { addActionListener { GuideNhRuntimeBridgeService.get().disconnect(); refresh() } })
+            add(JBLabel(MyMessageBundle.message("toolwindow.protocol")))
         }
 
         fun getContent(): JBPanel<JBPanel<*>> = content
