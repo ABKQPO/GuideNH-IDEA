@@ -51,7 +51,7 @@ class GuideNhWorkspaceIndex(private val project: Project) {
         EditorFactory.getInstance().eventMulticaster.addDocumentListener(object : DocumentListener {
             override fun documentChanged(event: DocumentEvent) {
                 FileDocumentManager.getInstance().getFile(event.document)?.let { file ->
-                    if (isGuideNhFile(file)) refresh(file)
+                    if (GuideNhFileUtil.isGuideNhDocument(file)) refresh(file)
                 }
             }
         }, project)
@@ -63,8 +63,11 @@ class GuideNhWorkspaceIndex(private val project: Project) {
             if (scanned) return
             val root = project.baseDir ?: return
             VfsUtilCore.iterateChildrenRecursively(root, null) { file ->
-                if (!file.isDirectory && isGuideNhFile(file)) {
-                    if (file.extension.equals("md", true)) index(file) else indexResource(file)
+                if (!file.isDirectory) {
+                    when {
+                        GuideNhFileUtil.isGuideNhDocument(file) -> index(file)
+                        GuideNhFileUtil.isGuideNhResource(file) -> indexResource(file)
+                    }
                 }
                 true
             }
@@ -74,8 +77,10 @@ class GuideNhWorkspaceIndex(private val project: Project) {
 
     fun refresh(file: VirtualFile) {
         remove(file)
-        if (file.isValid && isGuideNhFile(file)) {
-            if (file.extension.equals("md", true)) index(file) else indexResource(file)
+        if (!file.isValid || file.isDirectory) return
+        when {
+            GuideNhFileUtil.isGuideNhDocument(file) -> index(file)
+            GuideNhFileUtil.isGuideNhResource(file) -> indexResource(file)
         }
     }
 
@@ -226,8 +231,6 @@ class GuideNhWorkspaceIndex(private val project: Project) {
         resources[resource.resourceId] = resource
         resources[relative] = resource
     }
-    private fun isGuideNhFile(file: VirtualFile): Boolean = file.path.replace('\\', '/').contains("/guidenh/", true)
-
     private fun normalizeReference(reference: String, from: VirtualFile): String {
         val value = unwrapLegacyMarkdownDestination(reference).substringBefore('#').trim()
         val explicit = Regex("^([A-Za-z0-9_.-]+):(.+)$").find(value)

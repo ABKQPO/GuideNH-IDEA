@@ -15,7 +15,7 @@ class GuideNhInspectionSuppressor : InspectionSuppressor {
     override fun isSuppressedFor(element: PsiElement, toolId: String): Boolean {
         if (toolId !in SUPPRESSED_TOOLS || !isGuideNhContext(element)) return false
         if (toolId == "MarkdownUnresolvedFileReference") {
-            return isLegacyGuideNhResourceLink(element)
+            return isResolvedGuideNhResourceLink(element)
         }
         var current: PsiElement? = element
         while (current != null) {
@@ -37,10 +37,19 @@ class GuideNhInspectionSuppressor : InspectionSuppressor {
         return GuideNhFileUtil.isGuideNhDocument(topLevelFile)
     }
 
-    private fun isLegacyGuideNhResourceLink(element: PsiElement): Boolean {
+    private fun isResolvedGuideNhResourceLink(element: PsiElement): Boolean {
         val topLevelFile = InjectedLanguageManager.getInstance(element.project).getTopLevelFile(element)
-        val offset = element.textRange.startOffset
-        return legacyMarkdownResourcePattern.findAll(topLevelFile.text).any { match -> offset in match.range }
+        val elementText = element.text.trim().trim('"', '\'')
+        val index = GuideNhWorkspaceIndex.get(element.project)
+        return GuideNhParser.parse(topLevelFile.text).references.any { reference ->
+            if (reference.kind != GuideNhReferenceKind.RESOURCE) return@any false
+            val resourceName = reference.value.substringBefore('#').replace('\\', '/').substringAfterLast('/')
+            // Markdown inspections operate on an injected PSI fragment, so its offsets are
+            // not comparable to the top-level Markdown source. Match the destination name and
+            // defer the actual existence check to the same GuideNH index used for navigation.
+            resourceName.isNotBlank() && elementText.contains(resourceName) &&
+                index.findResource(reference.value, topLevelFile.virtualFile) != null
+        }
     }
 
     private companion object {
@@ -55,6 +64,5 @@ class GuideNhInspectionSuppressor : InspectionSuppressor {
             "MarkdownUnresolvedFileReference",
             "SpellCheckingInspection"
         )
-        val legacyMarkdownResourcePattern = Regex("!?\\[[^\\]\\r\\n]*\\]\\(\\*[^)\\r\\n]+\\*\\)")
     }
 }

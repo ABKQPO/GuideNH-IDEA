@@ -1,4 +1,5 @@
 (() => {
+  const initialize = () => {
   const all = selector => Array.from(document.querySelectorAll(selector));
   const attr = (element, name) => element.getAttribute(name) || element.getAttribute(name.toLowerCase()) || '';
   const esc = value => String(value || '').replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
@@ -78,11 +79,34 @@
 
   const normalizeLegacyImageSource = source => {
     const decoded = String(source || '').replace(/%2a/gi, '*');
-    return /\*.*\.(?:png|jpe?g|gif|webp|svg)\*$/i.test(decoded) ? decoded.replace(/\*/g, '') : source;
+    return (/\*.*\.(?:png|jpe?g|gif|webp|svg)\*$/i.test(decoded) ? decoded.replace(/\*/g, '') : source).replace(/\\([_()[\]])/g, '$1');
   };
-  all('img').forEach(image => {
-    const source = image.getAttribute('src');
+  const resolveGuideNhImageSource = source => {
     const normalized = normalizeLegacyImageSource(source);
+    if (!normalized || /^(?:[a-z][a-z0-9+.-]*:|\/\/|#)/i.test(normalized) && !/^file:/i.test(normalized)) return normalized;
+    const imageUrl = window.__GUIDENH_IMAGE_URL__;
+    if (imageUrl) return imageUrl + encodeResourceReference(normalized);
+    const base = window.__GUIDENH_DOCUMENT_URL__;
+    try { return base ? new URL(normalized, base).toString() : normalized; } catch (_) { return normalized; }
+  };
+  const encodeResourceReference = value => {
+    const bytes = new TextEncoder().encode(String(value));
+    let binary = '';
+    bytes.forEach(byte => { binary += String.fromCharCode(byte); });
+    return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  };
+  const previewImageReference = (source, index) => {
+    if (!source || !/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(source)) return source;
+    const references = Array.isArray(window.__GUIDENH_IMAGE_REFERENCES__) ? window.__GUIDENH_IMAGE_REFERENCES__ : [];
+    const clean = value => String(value || '').split(/[?#]/, 1)[0].replace(/\\/g, '/').split('/').pop();
+    const name = clean(source);
+    return references.find(reference => clean(reference) === name) || references[index] || source;
+  };
+  all('img').forEach((image, index) => {
+    // IntelliJ's renderer preserves the source on some preview engines and
+    // eagerly resolves it on others. Prefer the original form when available.
+    const source = image.getAttribute('data-src') || previewImageReference(image.getAttribute('src'), index);
+    const normalized = resolveGuideNhImageSource(source);
     if (normalized !== source) image.setAttribute('src', normalized);
   });
 
@@ -109,17 +133,34 @@
     if (chip.tagName === 'A') chip.href = '#'; element.replaceWith(chip);
   });
 
-  all('floatingimage').forEach(element => {
-    const src = attr(element, 'src'); if (!src) return;
-    const image = document.createElement('img'); image.className = 'guidenh-floating-image'; image.src = src; image.alt = attr(element, 'alt') || attr(element, 'title') || src;
-    const width = number(attr(element, 'width') || attr(element, 'w'));
-    const height = number(attr(element, 'height') || attr(element, 'h'));
+  const floatingConfig = element => {
+    const payload = element.getAttribute('data-guidenh-floating');
+    if (payload) {
+      try { return JSON.parse(decodeURIComponent(payload)); } catch (_) { return {}; }
+    }
+    return {
+      alt: attr(element, 'alt') || attr(element, 'title'), align: attr(element, 'align'), wrap: attr(element, 'wrap'),
+      displayWidth: attr(element, 'displaywidth'), displayHeight: attr(element, 'displayheight'), width: attr(element, 'width') || attr(element, 'w'), height: attr(element, 'height') || attr(element, 'h'),
+      scaleX: attr(element, 'scalex'), scaleY: attr(element, 'scaley')
+    };
+  };
+  const applyFloatingImageLayout = (image, config) => {
+    image.classList.add('guidenh-floating-image');
+    if (config.alt) image.alt = config.alt;
+    const width = number(config.displayWidth || config.width);
+    const height = number(config.displayHeight || config.height);
     if (Number.isFinite(width)) image.style.width = width + 'px';
     if (Number.isFinite(height)) image.style.height = height + 'px';
-    const scaleX = number(attr(element, 'scalex'), 1), scaleY = number(attr(element, 'scaley'), 1);
+    const scaleX = number(config.scaleX, 1), scaleY = number(config.scaleY, 1);
     if (scaleX !== 1 || scaleY !== 1) image.style.transform = 'scale(' + scaleX + ',' + scaleY + ')';
-    const align = attr(element, 'align').toLowerCase();
-    if (attr(element, 'wrap').toLowerCase() === 'square' && (align === 'left' || align === 'right')) image.classList.add('guidenh-float-' + align);
+    const align = String(config.align || '').toLowerCase();
+    if (String(config.wrap || '').toLowerCase() === 'square' && (align === 'left' || align === 'right')) image.classList.add('guidenh-float-' + align);
+  };
+  all('img[data-guidenh-floating]').forEach(image => applyFloatingImageLayout(image, floatingConfig(image)));
+  all('floatingimage').forEach(element => {
+    const src = attr(element, 'src'); if (!src) return;
+    const image = document.createElement('img'); image.src = resolveGuideNhImageSource(src);
+    applyFloatingImageLayout(image, floatingConfig(element));
     element.replaceWith(image);
   });
 
@@ -199,4 +240,10 @@
 
   const blockLabels = { gamescene:text.gameScene, scene:text.scene, recipe:text.recipe, recipefor:text.recipeLookup, recipesfor:text.recipeList, recipesusage:text.recipeUsage, recipeusage:text.recipeUsage, mermaid:text.mermaid, latex:text.latex, questcard:text.questCard, structure:text.structure, importstructure:text.importedStructure, importponder:text.importedPonder, barchart:text.barChart, columnchart:text.columnChart, linechart:text.lineChart, piechart:text.pieChart, scatterchart:text.scatterChart };
   Object.entries(blockLabels).forEach(([tag, label]) => all(tag).forEach(element => { if (element.classList.contains('guidenh-rendered')) return; element.classList.add('guidenh-rendered', 'guidenh-block'); const header = document.createElement('header'); header.textContent = label; const detail = attr(element, 'id') || attr(element, 'src') || attr(element, 'formula') || attr(element, 'title'); if (detail) { const code = document.createElement('code'); code.textContent = detail; header.append(' ', code); } element.prepend(header); }));
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
+  }
 })();
