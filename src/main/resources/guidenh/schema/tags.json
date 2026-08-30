@@ -315,7 +315,8 @@
         },
         "scale": {
           "type": "number",
-          "valueStyle": "expression"
+          "valueStyle": "expression",
+          "description": "Camera zoom multiplier; defaults to 4 when omitted."
         },
         "width": {
           "type": "number",
