@@ -6,6 +6,8 @@
       "description": "Adds the page to the guide navigation tree.",
       "children": {
         "title": { "type": "string", "description": "Navigation title." },
+        "keyword": { "type": "string", "description": "Single search keyword or alias." },
+        "keywords": { "type": "list", "description": "Search keywords or aliases." },
         "parent": { "type": "string", "description": "Parent page id." },
         "position": { "type": "number", "description": "Sibling sort position." },
         "priority": { "type": "number", "description": "Override priority." },
