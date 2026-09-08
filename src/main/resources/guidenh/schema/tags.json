@@ -491,6 +491,35 @@
       "children": [],
       "snippets": []
     },
+    "Channel": {
+      "name": "Channel",
+      "kind": "any",
+      "description": "Generated from GuideNH StructureLib channel option support.",
+      "attributes": {
+        "expr": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "id": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "name": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "tier": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "value": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
     "code": {
       "name": "code",
       "kind": "inline",
@@ -978,11 +1007,53 @@
       "children": [],
       "snippets": []
     },
+    "Facing": {
+      "name": "Facing",
+      "kind": "any",
+      "description": "Generated from GuideNH StructureLib facing option support.",
+      "attributes": {
+        "expr": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "name": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "value": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
     "FileTree": {
       "name": "FileTree",
       "kind": "block",
       "description": "Generated from GuideNH FileTree compiler source.",
       "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "Flip": {
+      "name": "Flip",
+      "kind": "any",
+      "description": "Generated from GuideNH StructureLib flip option support.",
+      "attributes": {
+        "expr": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "name": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "value": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
       "children": [],
       "snippets": []
     },
@@ -1575,6 +1646,38 @@
         "guidenh.gameScene"
       ]
     },
+    "GregTechActiveController": {
+      "name": "GregTechActiveController",
+      "kind": "any",
+      "description": "Generated from GuideNH GregTech active controller option support.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "GregTechPlaceHatches": {
+      "name": "GregTechPlaceHatches",
+      "kind": "any",
+      "description": "Generated from GuideNH GregTech hatch placement option support.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "GtActiveController": {
+      "name": "GtActiveController",
+      "kind": "any",
+      "description": "Generated from GuideNH GregTech active controller option support.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "GtPlaceHatches": {
+      "name": "GtPlaceHatches",
+      "kind": "any",
+      "description": "Generated from GuideNH GregTech hatch placement option support.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
     "h1": {
       "name": "h1",
       "kind": "block",
@@ -1848,7 +1951,18 @@
           "valueStyle": "string"
         }
       },
-      "children": [],
+      "children": [
+        "Channel",
+        "Facing",
+        "Flip",
+        "GregTechActiveController",
+        "GregTechPlaceHatches",
+        "GtActiveController",
+        "GtPlaceHatches",
+        "Orientation",
+        "Rotation",
+        "Tier"
+      ],
       "snippets": []
     },
     "IsometricCamera": {
@@ -2413,6 +2527,27 @@
       "description": "Generated from GuideNH ol compiler source.",
       "attributes": {
         "start": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "Orientation": {
+      "name": "Orientation",
+      "kind": "any",
+      "description": "Generated from GuideNH StructureLib orientation option support.",
+      "attributes": {
+        "expr": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "name": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "value": {
           "type": "string",
           "valueStyle": "string"
         }
@@ -3247,6 +3382,27 @@
       "children": [],
       "snippets": []
     },
+    "Rotation": {
+      "name": "Rotation",
+      "kind": "any",
+      "description": "Generated from GuideNH StructureLib rotation option support.",
+      "attributes": {
+        "expr": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "name": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "value": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
     "Row": {
       "name": "Row",
       "kind": "block",
@@ -4000,6 +4156,27 @@
         "z": {
           "type": "number",
           "valueStyle": "expression"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "Tier": {
+      "name": "Tier",
+      "kind": "any",
+      "description": "Generated from GuideNH StructureLib tier option support.",
+      "attributes": {
+        "expr": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "tier": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "value": {
+          "type": "number",
+          "valueStyle": "string"
         }
       },
       "children": [],
