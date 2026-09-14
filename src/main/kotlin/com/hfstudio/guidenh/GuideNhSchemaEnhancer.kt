@@ -15,6 +15,9 @@ object GuideNhSchemaEnhancer {
         functionGraph(tags, source(sources, "FunctionGraphAttrs")?.text)
         recipes(tags)
         references(tags)
+        contributors(tags, sources)
+        markdownExtensions(root, sources)
+        insertTemplates(root, sources)
     }
 
     private fun charts(tags: JsonObject, sources: List<JavaSource>) {
@@ -123,6 +126,238 @@ object GuideNhSchemaEnhancer {
     private fun mergeChildren(tag: JsonObject, children: Collection<String>) { val all = (tag.getAsJsonArray("children")?.map { it.asString }.orEmpty() + children).distinct().sorted(); tag.add("children", JsonArray().also { array -> all.forEach(array::add) }) }
     private fun tag(tags: JsonObject, name: String, description: String? = null): JsonObject = tags.entrySet().firstOrNull { it.key.equals(name, true) }?.value?.asJsonObject ?: JsonObject().also { value -> value.addProperty("name", name); description?.let { value.addProperty("description", it) }; value.add("attributes", JsonObject()); value.add("children", JsonArray()); tags.add(name, value) }
 
+    /**
+     * Reads the syntax declared by GuideNH syntax contributors.
+     *
+     * Compiler sources only describe the tags a compiler owns. Attributes read by shared parsers or by
+     * the scene runtime, container children and container-only tags live in a `SyntaxContributor`, which
+     * is declarative data: `sink.attributes("Tag", AttributeSyntax.of("name", SyntaxValueKind.KIND))`
+     * plus shared `private static final AttributeSyntax NAME = AttributeSyntax.of(...)` declarations.
+     * Reading it keeps this schema in step with the mod, including what third-party mods contribute.
+     */
+    private fun contributors(tags: JsonObject, sources: List<JavaSource>) {
+        for (source in sources) {
+            if (!source.text.contains("SyntaxContributor")) continue
+            val shared = LinkedHashMap<String, Pair<String, JsonObject>>()
+            Regex(
+                "AttributeSyntax\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*=\\s*AttributeSyntax\\s*\\.\\s*of\\(\\s*\"([^\"]+)\"\\s*,\\s*SyntaxValueKind\\s*\\.\\s*([A-Z0-9_]+)(?:\\s*,\\s*([\\s\\S]*?))?\\)\\s*;",
+                RegexOption.DOT_MATCHES_ALL
+            ).findAll(source.text).forEach { match ->
+                shared[match.groupValues[1]] = match.groupValues[2] to contributorAttr(match.groupValues[3], quoted(match.groupValues[4]))
+            }
+            Regex("sink\\s*\\.\\s*(?:tags|containerTags)\\(([\\s\\S]*?)\\)\\s*;").findAll(source.text).forEach { call ->
+                quoted(call.groupValues[1]).forEach { name -> tag(tags, name) }
+            }
+            Regex("sink\\s*\\.\\s*attributes\\(\\s*\"([^\"]+)\"\\s*,([\\s\\S]*?)\\)\\s*;").findAll(source.text).forEach { call ->
+                val attrs = LinkedHashMap<String, JsonObject>()
+                for (argument in splitArguments(call.groupValues[2])) {
+                    val inline = Regex(
+                        "^AttributeSyntax\\s*\\.\\s*of\\(\\s*\"([^\"]+)\"\\s*,\\s*SyntaxValueKind\\s*\\.\\s*([A-Z0-9_]+)(?:\\s*,\\s*([\\s\\S]*))?\\)$",
+                        RegexOption.DOT_MATCHES_ALL
+                    ).find(argument)
+                    if (inline != null) {
+                        attrs[inline.groupValues[1]] = contributorAttr(inline.groupValues[2], quoted(inline.groupValues[3]))
+                        continue
+                    }
+                    val declared = shared[argument]
+                    if (declared != null) attrs[declared.first] = declared.second
+                }
+                if (attrs.isNotEmpty()) mergeAttrs(tags, call.groupValues[1], attrs)
+            }
+            Regex("sink\\s*\\.\\s*children\\(\\s*\"([^\"]+)\"\\s*,([\\s\\S]*?)\\)\\s*;").findAll(source.text).forEach { call ->
+                mergeChildren(tags, call.groupValues[1], quoted(call.groupValues[2]))
+            }
+        }
+    }
+
+    /**
+     * Reads the markdown syntax the GuideNH sources declare.
+     *
+     * Inline markers come from paired `MarkdownSnippet.inline("trigger", "label", "replacement",
+     * caretOffset)` calls: a snippet whose replacement is its own trigger twice wraps the selection in
+     * that marker. Fence names come from `sink.fenceLanguages(...)`, resolving literal names, constants
+     * read from the class that declares them and the entries of the code block language registry. A
+     * third-party contributor is read exactly like the built-in one.
+     */
+    private fun markdownExtensions(root: JsonObject, sources: List<JavaSource>) {
+        val section = root.getAsJsonObject("markdownExtensions") ?: JsonObject().also { root.add("markdownExtensions", it) }
+        val markers = section.getAsJsonObject("inlineMarkers") ?: JsonObject().also { section.add("inlineMarkers", it) }
+        val fences = section.getAsJsonObject("fencedCodeBlocks") ?: JsonObject().also { section.add("fencedCodeBlocks", it) }
+        for (source in sources) {
+            if (source.text.contains("MarkdownSnippet")) {
+                Regex("MarkdownSnippet\\s*\\.\\s*inline\\(\\s*\"([^\"]*)\"\\s*,\\s*\"([^\"]*)\"\\s*,\\s*\"([^\"]*)\"").findAll(source.text).forEach { match ->
+                    val trigger = match.groupValues[1]
+                    val name = markerKey(match.groupValues[2])
+                    if (trigger.isNotEmpty() && match.groupValues[3] == trigger + trigger && markers.get(name) == null) {
+                        markers.add(name, JsonObject().apply {
+                            addProperty("open", trigger)
+                            addProperty("close", trigger)
+                            addProperty("description", "${match.groupValues[2]}.")
+                        })
+                    }
+                }
+            }
+            Regex("sink\\s*\\.\\s*fenceLanguages\\(([\\s\\S]*?)\\)\\s*;").findAll(source.text).forEach { call ->
+                for (argument in splitArguments(call.groupValues[1])) {
+                    for (fence in fenceLanguages(argument, sources)) {
+                        if (fences.get(fence.first) == null) fences.add(fence.first, JsonObject().apply { addProperty("description", fence.second) })
+                    }
+                }
+            }
+        }
+    }
+
+    private fun fenceLanguages(argument: String, sources: List<JavaSource>): List<Pair<String, String>> {
+        val literals = quoted(argument)
+        if (literals.isNotEmpty()) return literals.map { it to fenceDescription(it) }
+        val constant = Regex("^([A-Za-z0-9_]+)\\s*\\.\\s*([A-Z0-9_]+)\\b").find(argument)
+        if (constant != null) {
+            val values = stringConstant(sources, constant.groupValues[1], constant.groupValues[2])
+            if (values.isNotEmpty()) return values.map { it to fenceDescription(it) }
+        }
+        val call = Regex("^([A-Za-z0-9_]+)\\s*\\.\\s*([A-Za-z0-9_]+)").find(argument) ?: return emptyList()
+        return registeredLanguages(sources, call.groupValues[1], call.groupValues[2])
+    }
+
+    /** Reads `static final List<String> NAME = List.of("a", "b");` from the class that declares it. */
+    private fun stringConstant(sources: List<JavaSource>, className: String, constantName: String): List<String> {
+        val text = source(sources, className)?.text ?: return emptyList()
+        val declaration = Regex("\\b$constantName\\b\\s*=\\s*([^;]+);").find(text) ?: return emptyList()
+        return quoted(declaration.groupValues[1])
+    }
+
+    /**
+     * Reads the fence names a registry class exposes. A method that announces aliases answers with the
+     * alias names it maps, written as `registerAlias(result, "languageId", "alias", ...)`; any other
+     * method answers with the registered languages, written as `new CodeBlockLanguage("id", "Label")`.
+     */
+    private fun registeredLanguages(sources: List<JavaSource>, className: String, methodName: String): List<Pair<String, String>> {
+        val text = source(sources, className)?.text ?: return emptyList()
+        if (methodName.contains("alias", true)) {
+            val aliases = LinkedHashSet<String>()
+            Regex("registerAlias\\s*\\(\\s*[A-Za-z0-9_]+,\\s*([^;]*)\\)\\s*;").findAll(text).forEach { call ->
+                quoted(call.groupValues[1]).drop(1).forEach { aliases.add(it) }
+            }
+            return aliases.map { it to fenceDescription(it) }
+        }
+        return Regex("new\\s+[A-Za-z0-9_]*Language\\s*\\(\\s*\"([^\"]+)\"\\s*(?:,\\s*\"([^\"]+)\")?").findAll(text).map { match ->
+            val label = match.groupValues[2]
+            match.groupValues[1] to if (label.isEmpty()) fenceDescription(match.groupValues[1]) else "$label fenced code block."
+        }.toList()
+    }
+
+    private fun markerKey(label: String): String = label.split(Regex("[^A-Za-z0-9]+")).filter { it.isNotEmpty() }
+        .mapIndexed { index, word -> if (index == 0) word.lowercase() else word.substring(0, 1).uppercase() + word.substring(1).lowercase() }
+        .joinToString("")
+
+    /** One Java string literal, including escaped characters such as a quote or a line break. */
+    private val JAVA_STRING_LITERAL = Regex("\"((?:[^\"\\\\]|\\\\.)*)\"")
+
+    private fun fenceDescription(name: String) = "$name fenced code block."
+
+    /**
+     * Reads the insert templates the GuideNH sources declare.
+     *
+     * A contributor writes the text a tag completes as with `InsertTemplate.caretAfter(tag, text, marker)`,
+     * `InsertTemplate.of(tag, text)` or `new InsertTemplate(tag, text, caretOffset)`. The overlay carries
+     * them as snippets, so the editor inserts the same form with the caret at the same place.
+     */
+    private fun insertTemplates(root: JsonObject, sources: List<JavaSource>) {
+        val snippets = root.getAsJsonObject("snippets") ?: JsonObject().also { root.add("snippets", it) }
+        for (source in sources) {
+            if (!source.text.contains("InsertTemplate")) continue
+            Regex("sink\\s*\\.\\s*insertTemplates\\(([\\s\\S]*?)\\)\\s*;").findAll(source.text).forEach { call ->
+                for (argument in splitArguments(call.groupValues[1])) {
+                    val template = readInsertTemplate(argument) ?: continue
+                    val key = "guidenh." + template.tagName.replaceFirstChar { it.lowercase() }
+                    if (snippets.get(key) != null) continue
+                    snippets.add(key, JsonObject().apply {
+                        addProperty("prefix", template.tagName)
+                        add("body", JsonArray().also { array -> tabStoppedBody(template).forEach(array::add) })
+                        addProperty("description", "Insert a <${template.tagName}> tag.")
+                    })
+                }
+            }
+        }
+    }
+
+    private data class InsertTemplateDeclaration(val tagName: String, val text: String, val caretOffset: Int)
+
+    private fun readInsertTemplate(argument: String): InsertTemplateDeclaration? {
+        val literals = JAVA_STRING_LITERAL.findAll(argument).map { unescapeJava(it.groupValues[1]) }.toList()
+        if (literals.size < 2) return null
+        val tagName = literals[0]
+        val text = literals[1]
+        if (argument.contains("caretAfter")) {
+            val marker = literals.getOrNull(2) ?: return null
+            val index = if (marker.isEmpty()) -1 else text.indexOf(marker)
+            return InsertTemplateDeclaration(tagName, text, if (index >= 0) index + marker.length else text.length)
+        }
+        val declared = Regex(",\\s*(\\d+)\\s*\\)\\s*$").find(argument.trim())
+        return InsertTemplateDeclaration(tagName, text, declared?.groupValues?.get(1)?.toIntOrNull() ?: text.length)
+    }
+
+    /** Splits the template into the lines the editor inserts, with the final tab stop at the caret. */
+    private fun tabStoppedBody(template: InsertTemplateDeclaration): List<String> {
+        val offset = template.caretOffset.coerceIn(0, template.text.length)
+        return (template.text.substring(0, offset) + "\$0" + template.text.substring(offset)).split("\n")
+    }
+
+    /** Resolves the escapes a Java string literal carries, so the exported snippet keeps its line breaks. */
+    private fun unescapeJava(text: String) = text
+        .replace("\\n", "\n")
+        .replace("\\t", "\t")
+        .replace("\\\"", "\"")
+        .replace("\\\\", "\\")
+
+    private fun contributorAttr(kind: String, values: List<String>): JsonObject = when (kind) {
+        "INT", "FLOAT" -> number()
+        "BOOLEAN" -> boolean()
+        "COLOR" -> color()
+        "ENUM" -> if (values.isEmpty()) string() else enum(values)
+        "ITEM_ID", "BLOCK_ID" -> item()
+        "ORE_DICT" -> ore()
+        "PAGE_PATH" -> attr("page")
+        "FILE_PATH" -> resource()
+        "SNBT", "VECTOR3" -> attr("string", "bare")
+        else -> string()
+    }
+
+    private fun quoted(text: String): List<String> = Regex("\"([^\"\n]*)\"").findAll(text).map { it.groupValues[1] }.toList()
+
+    /** Splits an argument list on commas that sit outside parentheses and strings. */
+    private fun splitArguments(text: String): List<String> {
+        val parts = ArrayList<String>()
+        var depth = 0
+        var inString = false
+        var escaped = false
+        val current = StringBuilder()
+        for (character in text) {
+            if (inString && escaped) {
+                escaped = false
+                current.append(character)
+                continue
+            }
+            if (inString && character == '\\') {
+                escaped = true
+                current.append(character)
+                continue
+            }
+            if (character == '"') inString = !inString
+            if (!inString) {
+                if (character == '(') depth++
+                if (character == ')') depth--
+                if (character == ',' && depth == 0) {
+                    parts.add(current.toString().trim())
+                    current.setLength(0)
+                    continue
+                }
+            }
+            current.append(character)
+        }
+        if (current.toString().trim().isNotEmpty()) parts.add(current.toString().trim())
+        return parts
+    }
     private fun attr(type: String, style: String = "string", description: String? = null, values: List<String> = emptyList()) = JsonObject().apply { addProperty("type", type); addProperty("valueStyle", style); description?.let { addProperty("description", it) }; if (values.isNotEmpty()) add("values", JsonArray().also { values.forEach(it::add) }) }
     private fun string(description: String? = null) = attr("string", description = description); private fun number(style: String = "string") = attr("number", style); private fun boolean(style: String = "string", description: String? = null) = attr("boolean", style, description); private fun color() = attr("color"); private fun item() = attr("item"); private fun ore() = attr("ore"); private fun resource() = attr("resource"); private fun enum(values: List<String>) = attr("enum", values = values)
     private fun reader(name: String) = when { name.contains("boolean", true) -> boolean("expression"); name.contains("int", true) || name.contains("float", true) || name.contains("double", true) || name.contains("number", true) -> number(); name.contains("color", true) -> color(); name.contains("itemstack", true) -> item(); name.contains("ore", true) -> ore(); name.contains("resource", true) -> resource(); name.contains("page", true) -> attr("page"); else -> string() }

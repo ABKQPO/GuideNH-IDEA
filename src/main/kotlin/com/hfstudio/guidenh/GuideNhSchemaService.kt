@@ -13,6 +13,7 @@ class GuideNhSchemaService(private val project: Project) {
     private val snippets: List<GuideNhSnippet> by lazy { loadSnippets() }
     private val fencedBlocks: Map<String, String> by lazy { loadFencedBlocks() }
     private val inlineMarkers: Map<String, Pair<String, String>> by lazy { loadInlineMarkers() }
+    private val generatedOverlay: JsonObject by lazy { loadOverlay() }
 
     fun tag(name: String): GuideNhTagSchema? = tags[name.lowercase()]
     fun allTags(): Collection<GuideNhTagSchema> = tags.values
@@ -117,18 +118,50 @@ class GuideNhSchemaService(private val project: Project) {
     }
 
     private fun loadSnippets(): List<GuideNhSnippet> {
-        val stream = javaClass.getResourceAsStream("/guidenh/schema/snippets.json") ?: return emptyList()
+        val merged = LinkedHashMap(shippedSnippets())
+        overlaySnippets().forEach { (key, snippet) -> merged.putIfAbsent(key, snippet) }
+        return merged.values.toList()
+    }
+
+    private fun shippedSnippets(): Map<String, GuideNhSnippet> {
+        val stream = javaClass.getResourceAsStream("/guidenh/schema/snippets.json") ?: return emptyMap()
         stream.use {
-            val root = Gson().fromJson(it.reader(), JsonObject::class.java).getAsJsonObject("snippets") ?: return emptyList()
-            return root.entrySet().map { (_, value) ->
+            val root = Gson().fromJson(it.reader(), JsonObject::class.java).getAsJsonObject("snippets") ?: return emptyMap()
+            return root.entrySet().associate { (key, value) ->
                 val item = value.asJsonObject
-                GuideNhSnippet(item.get("prefix")?.asString ?: "", item.getAsJsonArray("body")?.map { body -> body.asString } ?: emptyList(), item.get("description")?.asString)
+                key to GuideNhSnippet(
+                    item.get("prefix")?.asString ?: "",
+                    item.getAsJsonArray("body")?.map { body -> body.asString } ?: emptyList(),
+                    item.get("description")?.asString
+                )
             }
         }
     }
 
-    private fun loadFencedBlocks(): Map<String, String> = loadMarkdownSection("fencedCodeBlocks")
+    /** The insert templates the workspace's Java sources declare, written next to the generated tags. */
+    private fun overlaySnippets(): Map<String, GuideNhSnippet> =
+        overlaySection("snippets").entrySet().associate { (key, value) ->
+            val item = value.asJsonObject
+            key to GuideNhSnippet(
+                item.get("prefix")?.asString ?: "",
+                item.getAsJsonArray("body")?.map { body -> body.asString } ?: emptyList(),
+                item.get("description")?.asString
+            )
+        }
+
+    private fun loadFencedBlocks(): Map<String, String> =
+        loadMarkdownSection("fencedCodeBlocks") + overlayDescriptions("fencedCodeBlocks")
+
     private fun loadInlineMarkers(): Map<String, Pair<String, String>> {
+        val merged = LinkedHashMap(shippedInlineMarkers())
+        overlaySection("markdownExtensions").getAsJsonObject("inlineMarkers")?.entrySet()?.forEach { (key, value) ->
+            val marker = value.asJsonObject
+            merged[key] = marker.get("open")?.asString.orEmpty() to marker.get("close")?.asString.orEmpty()
+        }
+        return merged
+    }
+
+    private fun shippedInlineMarkers(): Map<String, Pair<String, String>> {
         val stream = javaClass.getResourceAsStream("/guidenh/schema/markdownExtensions.json") ?: return emptyMap()
         stream.use {
             val root = Gson().fromJson(it.reader(), JsonObject::class.java).getAsJsonObject("inlineMarkers") ?: return emptyMap()
@@ -138,6 +171,23 @@ class GuideNhSchemaService(private val project: Project) {
             }
         }
     }
+
+    /** The schema the workspace's Java sources declare, written next to the generated tags. */
+    private fun loadOverlay(): JsonObject {
+        val base = project.basePath ?: return JsonObject()
+        val file = java.nio.file.Path.of(base, ".idea", "guidenh", "schema", "generated-tags.json")
+        if (!java.nio.file.Files.isRegularFile(file)) return JsonObject()
+        return runCatching { Gson().fromJson(EelFiles.readString(file), JsonObject::class.java) }
+            .getOrDefault(JsonObject())
+    }
+
+    private fun overlaySection(section: String): JsonObject = generatedOverlay.getAsJsonObject(section) ?: JsonObject()
+
+    /** Reads a section of the workspace overlay as name to description pairs. */
+    private fun overlayDescriptions(section: String): Map<String, String> =
+        overlaySection("markdownExtensions").getAsJsonObject(section)?.entrySet()
+            ?.associate { (key, value) -> key to (value.asJsonObject.get("description")?.asString.orEmpty()) }
+            .orEmpty()
 
     private fun loadMarkdownSection(section: String): Map<String, String> {
         val stream = javaClass.getResourceAsStream("/guidenh/schema/markdownExtensions.json") ?: return emptyMap()

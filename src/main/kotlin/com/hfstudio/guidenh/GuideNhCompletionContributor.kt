@@ -118,9 +118,11 @@ class GuideNhCompletionContributor : CompletionContributor() {
                     }
                     return
                 }
-                val markerPrefix = Regex("(?:==|\\+\\+|\\^\\^|::)?$").find(before)?.value.orEmpty()
+                val markerService = GuideNhSchemaService.get(file.project)
+                val markerPrefix = markerService.inlineMarkers().values.map { it.first }.filter { it.isNotEmpty() }
+                    .sortedByDescending { it.length }.firstOrNull { before.endsWith(it) }.orEmpty()
                 if (markerPrefix.isNotEmpty()) {
-                    GuideNhSchemaService.get(file.project).inlineMarkers().forEach { (name, marker) ->
+                    markerService.inlineMarkers().filter { (_, marker) -> marker.first.startsWith(markerPrefix) }.forEach { (_, marker) ->
                         result.addElement(LookupElementBuilder.create(marker.first).withTypeText(MyMessageBundle.message("completion.inline")).withTailText(" ${marker.second}"))
                     }
                 }

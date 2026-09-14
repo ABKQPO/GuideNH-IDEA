@@ -1,15 +1,164 @@
 {
   "schemaVersion": 1,
   "inlineMarkers": {
-    "highlight": { "open": "==", "close": "==", "description": "Inline highlight." },
-    "underline": { "open": "++", "close": "++", "description": "Straight underline." },
-    "wavyUnderline": { "open": "^^", "close": "^^", "description": "Wavy underline." },
-    "dottedUnderline": { "open": "::", "close": "::", "description": "Dotted underline." }
+    "underline": {
+      "open": "++",
+      "close": "++",
+      "description": "Straight underline."
+    },
+    "wavyUnderline": {
+      "open": "^^",
+      "close": "^^",
+      "description": "Wavy underline."
+    },
+    "dottedUnderline": {
+      "open": "::",
+      "close": "::",
+      "description": "Dotted underline."
+    },
+    "bold": {
+      "open": "**",
+      "close": "**",
+      "description": "Bold."
+    },
+    "italic": {
+      "open": "*",
+      "close": "*",
+      "description": "Italic."
+    },
+    "strikethrough": {
+      "open": "~~",
+      "close": "~~",
+      "description": "Strikethrough."
+    },
+    "inlineCode": {
+      "open": "`",
+      "close": "`",
+      "description": "Inline code."
+    },
+    "highlight": {
+      "open": "==",
+      "close": "==",
+      "description": "Inline highlight."
+    }
   },
   "fencedCodeBlocks": {
-    "csv": { "description": "Runtime CSV table." },
-    "mermaid": { "description": "Runtime Mermaid mindmap when supported." },
-    "filetree": { "description": "Runtime file tree." },
-    "funcgraph": { "description": "Runtime function graph." }
+    "csv": {
+      "description": "Runtime CSV table."
+    },
+    "mermaid": {
+      "description": "Runtime Mermaid mindmap when supported."
+    },
+    "filetree": {
+      "description": "Runtime file tree."
+    },
+    "funcgraph": {
+      "description": "Runtime function graph."
+    },
+    "text": {
+      "description": "Text fenced code block."
+    },
+    "java": {
+      "description": "Java fenced code block."
+    },
+    "kotlin": {
+      "description": "Kotlin fenced code block."
+    },
+    "scala": {
+      "description": "Scala fenced code block."
+    },
+    "groovy": {
+      "description": "Groovy fenced code block."
+    },
+    "lua": {
+      "description": "Lua fenced code block."
+    },
+    "json": {
+      "description": "JSON fenced code block."
+    },
+    "yaml": {
+      "description": "YAML fenced code block."
+    },
+    "xml": {
+      "description": "XML fenced code block."
+    },
+    "properties": {
+      "description": "Properties fenced code block."
+    },
+    "bash": {
+      "description": "Bash fenced code block."
+    },
+    "powershell": {
+      "description": "PowerShell fenced code block."
+    },
+    "markdown": {
+      "description": "Markdown fenced code block."
+    },
+    "javascript": {
+      "description": "JavaScript fenced code block."
+    },
+    "typescript": {
+      "description": "TypeScript fenced code block."
+    },
+    "tree": {
+      "description": "tree fenced code block."
+    },
+    "function": {
+      "description": "function fenced code block."
+    },
+    "functiongraph": {
+      "description": "functiongraph fenced code block."
+    },
+    "plain": {
+      "description": "plain fenced code block."
+    },
+    "plaintext": {
+      "description": "plaintext fenced code block."
+    },
+    "txt": {
+      "description": "txt fenced code block."
+    },
+    "kt": {
+      "description": "kt fenced code block."
+    },
+    "kts": {
+      "description": "kts fenced code block."
+    },
+    "sc": {
+      "description": "sc fenced code block."
+    },
+    "gradle": {
+      "description": "gradle fenced code block."
+    },
+    "yml": {
+      "description": "yml fenced code block."
+    },
+    "html": {
+      "description": "html fenced code block."
+    },
+    "ini": {
+      "description": "ini fenced code block."
+    },
+    "sh": {
+      "description": "sh fenced code block."
+    },
+    "shell": {
+      "description": "shell fenced code block."
+    },
+    "ps1": {
+      "description": "ps1 fenced code block."
+    },
+    "pwsh": {
+      "description": "pwsh fenced code block."
+    },
+    "md": {
+      "description": "md fenced code block."
+    },
+    "js": {
+      "description": "js fenced code block."
+    },
+    "ts": {
+      "description": "ts fenced code block."
+    }
   }
 }
