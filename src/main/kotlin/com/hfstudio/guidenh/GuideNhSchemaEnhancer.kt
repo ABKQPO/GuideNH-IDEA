@@ -125,7 +125,8 @@ object GuideNhSchemaEnhancer {
     private fun mergeChildren(tags: JsonObject, name: String, children: Collection<String>) = mergeChildren(tag(tags, name), children)
     private fun mergeChildren(tag: JsonObject, children: Collection<String>) { val all = (tag.getAsJsonArray("children")?.map { it.asString }.orEmpty() + children).distinct().sorted(); tag.add("children", JsonArray().also { array -> all.forEach(array::add) }) }
     /** Replaces a tag's allowed children, for declarations that are the whole truth for that container. */
-    private fun setChildren(tag: JsonObject, children: Collection<String>) { tag.add("children", JsonArray().also { array -> children.distinct().sorted().forEach(array::add) }) }
+    private fun setChildren(tag: JsonObject, children: Collection<String>) { tag.add("children", JsonArray().also { array -> children.distinct().sorted().forEach(array::add) }); tag.remove("preferredChildren") }
+    private fun setPreferredChildren(tag: JsonObject, children: Collection<String>) { tag.add("children", JsonArray()); tag.add("preferredChildren", JsonArray().also { array -> children.distinct().forEach(array::add) }) }
     private fun tag(tags: JsonObject, name: String, description: String? = null): JsonObject = tags.entrySet().firstOrNull { it.key.equals(name, true) }?.value?.asJsonObject ?: JsonObject().also { value -> value.addProperty("name", name); description?.let { value.addProperty("description", it) }; value.add("attributes", JsonObject()); value.add("children", JsonArray()); tags.add(name, value) }
 
     /**
@@ -168,6 +169,11 @@ object GuideNhSchemaEnhancer {
             }
             Regex("sink\\s*\\.\\s*children\\(\\s*\"([^\"]+)\"\\s*,([\\s\\S]*?)\\)\\s*;").findAll(source.text).forEach { call ->
                 setChildren(tag(tags, call.groupValues[1]), quoted(call.groupValues[2]))
+            }
+            Regex("sink\\s*\\.\\s*preferredChildren\\(\\s*\"([^\"]+)\"\\s*,([\\s\\S]*?)\\)\\s*;").findAll(source.text).forEach { call ->
+                // The body takes ordinary block content, so this list ranks completion rather than
+                // restricting it; validation accepts any block tag in such a container.
+                setPreferredChildren(tag(tags, call.groupValues[1]), quoted(call.groupValues[2]))
             }
         }
     }

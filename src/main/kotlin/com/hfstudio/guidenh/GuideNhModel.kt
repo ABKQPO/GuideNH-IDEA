@@ -39,6 +39,8 @@ data class GuideNhTagSchema(
     val description: String? = null,
     val attributes: Map<String, GuideNhAttributeSchema> = emptyMap(),
     val children: List<String> = emptyList(),
+    /** Set when the body also takes ordinary block content, so [children] ranks completion instead of restricting it. */
+    val preferredChildren: List<String> = emptyList(),
     val removedAttributes: Set<String> = emptySet()
 )
 

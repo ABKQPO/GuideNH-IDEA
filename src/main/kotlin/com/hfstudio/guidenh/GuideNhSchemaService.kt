@@ -57,7 +57,8 @@ class GuideNhSchemaService(private val project: Project) {
                     name = objectValue.get("name")?.asString ?: key,
                     description = objectValue.get("description")?.asString,
                     attributes = attributes,
-                    children = objectValue.getAsJsonArray("children")?.map { it.asString } ?: emptyList()
+                    children = objectValue.getAsJsonArray("children")?.map { it.asString } ?: emptyList(),
+                    preferredChildren = objectValue.getAsJsonArray("preferredChildren")?.map { it.asString } ?: emptyList()
                 )
             }
             loadGeneratedTags().forEach { (key, generated) ->
@@ -66,7 +67,8 @@ class GuideNhSchemaService(private val project: Project) {
                     attributes = (existing.attributes.filterKeys { it.lowercase() !in generated.removedAttributes } + generated.attributes.filterKeys { generatedName ->
                         existing.attributes.keys.none { it.equals(generatedName, true) }
                     }).filterKeys { it.lowercase() !in generated.removedAttributes },
-                    children = (existing.children + generated.children).distinct().sorted(),
+                    children = if (generated.preferredChildren.isNotEmpty()) existing.children else (existing.children + generated.children).distinct().sorted(),
+                    preferredChildren = if (generated.preferredChildren.isNotEmpty()) generated.preferredChildren else existing.preferredChildren,
                     removedAttributes = existing.removedAttributes + generated.removedAttributes
                 )
             }
@@ -99,6 +101,7 @@ class GuideNhSchemaService(private val project: Project) {
                     description = tag.get("description")?.asString,
                     attributes = attributes.filterKeys { it.lowercase() !in removed },
                     children = tag.getAsJsonArray("children")?.map { it.asString } ?: emptyList(),
+                    preferredChildren = tag.getAsJsonArray("preferredChildren")?.map { it.asString } ?: emptyList(),
                     removedAttributes = removed
                 )
             }.orEmpty()

@@ -259,7 +259,15 @@
         }
       },
       "children": [],
-      "snippets": []
+      "snippets": [],
+      "preferredChildren": [
+        "BlockAnnotation",
+        "BoxAnnotation",
+        "LineAnnotation",
+        "DiamondAnnotation",
+        "TextAnnotation",
+        "BlockAnnotationTemplate"
+      ]
     },
     "BlockAnnotationTemplate": {
       "name": "BlockAnnotationTemplate",
@@ -284,7 +292,15 @@
         }
       },
       "children": [],
-      "snippets": []
+      "snippets": [],
+      "preferredChildren": [
+        "BlockAnnotation",
+        "BoxAnnotation",
+        "LineAnnotation",
+        "DiamondAnnotation",
+        "TextAnnotation",
+        "BlockAnnotationTemplate"
+      ]
     },
     "BlockImage": {
       "name": "BlockImage",
@@ -486,7 +502,15 @@
         }
       },
       "children": [],
-      "snippets": []
+      "snippets": [],
+      "preferredChildren": [
+        "BlockAnnotation",
+        "BoxAnnotation",
+        "LineAnnotation",
+        "DiamondAnnotation",
+        "TextAnnotation",
+        "BlockAnnotationTemplate"
+      ]
     },
     "br": {
       "name": "br",
@@ -934,7 +958,10 @@
         }
       },
       "children": [],
-      "snippets": []
+      "snippets": [],
+      "preferredChildren": [
+        "summary"
+      ]
     },
     "DiamondAnnotation": {
       "name": "DiamondAnnotation",
@@ -967,7 +994,15 @@
         }
       },
       "children": [],
-      "snippets": []
+      "snippets": [],
+      "preferredChildren": [
+        "BlockAnnotation",
+        "BoxAnnotation",
+        "LineAnnotation",
+        "DiamondAnnotation",
+        "TextAnnotation",
+        "BlockAnnotationTemplate"
+      ]
     },
     "div": {
       "name": "div",
@@ -2521,7 +2556,16 @@
         }
       },
       "children": [],
-      "snippets": []
+      "snippets": [],
+      "preferredChildren": [
+        "LinePoint",
+        "BlockAnnotation",
+        "BoxAnnotation",
+        "LineAnnotation",
+        "DiamondAnnotation",
+        "TextAnnotation",
+        "BlockAnnotationTemplate"
+      ]
     },
     "LineChart": {
       "name": "LineChart",
@@ -3212,9 +3256,6 @@
         "label": {
           "type": "string",
           "valueStyle": "string"
-        },
-        "name": {
-          "type": "string"
         },
         "plot": {
           "type": "number",
@@ -4579,7 +4620,15 @@
         }
       },
       "children": [],
-      "snippets": []
+      "snippets": [],
+      "preferredChildren": [
+        "BlockAnnotation",
+        "BoxAnnotation",
+        "LineAnnotation",
+        "DiamondAnnotation",
+        "TextAnnotation",
+        "BlockAnnotationTemplate"
+      ]
     },
     "Tier": {
       "name": "Tier",

@@ -37,7 +37,9 @@ class GuideNhAnnotator : Annotator {
             }
             val parent = stack.lastOrNull()
             val parentSchema = parent?.let { schema.tag(it.name) }
-            if (parentSchema != null && parentSchema.children.isNotEmpty() && parentSchema.children.none { it.equals(tag.name, true) }) {
+            val parentTakesBlockContent = parentSchema != null && parentSchema.preferredChildren.isNotEmpty()
+            if (parentSchema != null && !parentTakesBlockContent && parentSchema.children.isNotEmpty() &&
+                parentSchema.children.none { it.equals(tag.name, true) }) {
                 error(holder, tag.nameRange, MyMessageBundle.message("diagnostic.child.not.allowed", tag.name, parent.name))
             }
             if (tagSchema != null) {
