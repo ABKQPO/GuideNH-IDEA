@@ -258,14 +258,7 @@
           "valueStyle": "expression"
         }
       },
-      "children": [
-        "BlockAnnotation",
-        "BlockAnnotationTemplate",
-        "BoxAnnotation",
-        "DiamondAnnotation",
-        "LineAnnotation",
-        "TextAnnotation"
-      ],
+      "children": [],
       "snippets": []
     },
     "BlockAnnotationTemplate": {
@@ -290,14 +283,7 @@
           "valueStyle": "string"
         }
       },
-      "children": [
-        "BlockAnnotation",
-        "BlockAnnotationTemplate",
-        "BoxAnnotation",
-        "DiamondAnnotation",
-        "LineAnnotation",
-        "TextAnnotation"
-      ],
+      "children": [],
       "snippets": []
     },
     "BlockImage": {
@@ -499,14 +485,7 @@
           "valueStyle": "expression"
         }
       },
-      "children": [
-        "BlockAnnotation",
-        "BlockAnnotationTemplate",
-        "BoxAnnotation",
-        "DiamondAnnotation",
-        "LineAnnotation",
-        "TextAnnotation"
-      ],
+      "children": [],
       "snippets": []
     },
     "br": {
@@ -954,9 +933,7 @@
           "valueStyle": "string"
         }
       },
-      "children": [
-        "summary"
-      ],
+      "children": [],
       "snippets": []
     },
     "DiamondAnnotation": {
@@ -989,14 +966,7 @@
           "valueStyle": "string"
         }
       },
-      "children": [
-        "BlockAnnotation",
-        "BlockAnnotationTemplate",
-        "BoxAnnotation",
-        "DiamondAnnotation",
-        "LineAnnotation",
-        "TextAnnotation"
-      ],
+      "children": [],
       "snippets": []
     },
     "div": {
@@ -2182,11 +2152,11 @@
         },
         "modifier": {
           "type": "enum",
-          "valueStyle": "string",
           "values": [
             "sneak",
             "ctrl"
-          ]
+          ],
+          "valueStyle": "string"
         },
         "pos": {
           "type": "string",
@@ -2550,15 +2520,7 @@
           "valueStyle": "string"
         }
       },
-      "children": [
-        "BlockAnnotation",
-        "BlockAnnotationTemplate",
-        "BoxAnnotation",
-        "DiamondAnnotation",
-        "LineAnnotation",
-        "LinePoint",
-        "TextAnnotation"
-      ],
+      "children": [],
       "snippets": []
     },
     "LineChart": {
@@ -3355,6 +3317,11 @@
           "type": "string",
           "valueStyle": "string"
         },
+        "handlerBlacklist": {
+          "type": "string",
+          "valueStyle": "string",
+          "description": "Handler ids to skip unless this tag asks for them. Comma separated."
+        },
         "handlerId": {
           "type": "string",
           "valueStyle": "string",
@@ -3368,11 +3335,6 @@
         "handlerOrder": {
           "type": "string",
           "valueStyle": "string"
-        },
-        "handlerBlacklist": {
-          "type": "string",
-          "valueStyle": "string",
-          "description": "Handler ids to skip unless this tag asks for them. Comma separated."
         },
         "handlerWhitelist": {
           "type": "string",
@@ -3428,6 +3390,11 @@
           "type": "string",
           "valueStyle": "string"
         },
+        "handlerBlacklist": {
+          "type": "string",
+          "valueStyle": "string",
+          "description": "Handler ids to skip unless this tag asks for them. Comma separated."
+        },
         "handlerId": {
           "type": "string",
           "valueStyle": "string"
@@ -3439,11 +3406,6 @@
         "handlerOrder": {
           "type": "string",
           "valueStyle": "string"
-        },
-        "handlerBlacklist": {
-          "type": "string",
-          "valueStyle": "string",
-          "description": "Handler ids to skip unless this tag asks for them. Comma separated."
         },
         "handlerWhitelist": {
           "type": "string",
@@ -3495,6 +3457,11 @@
           "type": "string",
           "valueStyle": "string"
         },
+        "handlerBlacklist": {
+          "type": "string",
+          "valueStyle": "string",
+          "description": "Handler ids to skip unless this tag asks for them. Comma separated."
+        },
         "handlerId": {
           "type": "string",
           "valueStyle": "string"
@@ -3506,11 +3473,6 @@
         "handlerOrder": {
           "type": "string",
           "valueStyle": "string"
-        },
-        "handlerBlacklist": {
-          "type": "string",
-          "valueStyle": "string",
-          "description": "Handler ids to skip unless this tag asks for them. Comma separated."
         },
         "handlerWhitelist": {
           "type": "string",
@@ -3562,6 +3524,11 @@
           "type": "string",
           "valueStyle": "string"
         },
+        "handlerBlacklist": {
+          "type": "string",
+          "valueStyle": "string",
+          "description": "Handler ids to skip unless this tag asks for them. Comma separated."
+        },
         "handlerId": {
           "type": "string",
           "valueStyle": "string"
@@ -3573,11 +3540,6 @@
         "handlerOrder": {
           "type": "string",
           "valueStyle": "string"
-        },
-        "handlerBlacklist": {
-          "type": "string",
-          "valueStyle": "string",
-          "description": "Handler ids to skip unless this tag asks for them. Comma separated."
         },
         "handlerWhitelist": {
           "type": "string",
@@ -3629,6 +3591,11 @@
           "type": "string",
           "valueStyle": "string"
         },
+        "handlerBlacklist": {
+          "type": "string",
+          "valueStyle": "string",
+          "description": "Handler ids to skip unless this tag asks for them. Comma separated."
+        },
         "handlerId": {
           "type": "string",
           "valueStyle": "string"
@@ -3640,11 +3607,6 @@
         "handlerOrder": {
           "type": "string",
           "valueStyle": "string"
-        },
-        "handlerBlacklist": {
-          "type": "string",
-          "valueStyle": "string",
-          "description": "Handler ids to skip unless this tag asks for them. Comma separated."
         },
         "handlerWhitelist": {
           "type": "string",
@@ -4616,14 +4578,7 @@
           "valueStyle": "expression"
         }
       },
-      "children": [
-        "BlockAnnotation",
-        "BlockAnnotationTemplate",
-        "BoxAnnotation",
-        "DiamondAnnotation",
-        "LineAnnotation",
-        "TextAnnotation"
-      ],
+      "children": [],
       "snippets": []
     },
     "Tier": {
@@ -4698,6 +4653,11 @@
           "type": "string",
           "valueStyle": "string"
         },
+        "handlerBlacklist": {
+          "type": "string",
+          "valueStyle": "string",
+          "description": "Handler ids to skip unless this tag asks for them. Comma separated."
+        },
         "handlerId": {
           "type": "string",
           "valueStyle": "string"
@@ -4709,11 +4669,6 @@
         "handlerOrder": {
           "type": "string",
           "valueStyle": "string"
-        },
-        "handlerBlacklist": {
-          "type": "string",
-          "valueStyle": "string",
-          "description": "Handler ids to skip unless this tag asks for them. Comma separated."
         },
         "handlerWhitelist": {
           "type": "string",

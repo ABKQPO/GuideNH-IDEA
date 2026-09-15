@@ -124,6 +124,8 @@ object GuideNhSchemaEnhancer {
     private fun removeAttrs(tags: JsonObject, name: String, names: List<String>) { val tag = tag(tags, name); val removed = tag.getAsJsonArray("removeAttributes") ?: JsonArray().also { tag.add("removeAttributes", it) }; names.filterNot { name -> removed.any { it.asString.equals(name, true) } }.forEach(removed::add) }
     private fun mergeChildren(tags: JsonObject, name: String, children: Collection<String>) = mergeChildren(tag(tags, name), children)
     private fun mergeChildren(tag: JsonObject, children: Collection<String>) { val all = (tag.getAsJsonArray("children")?.map { it.asString }.orEmpty() + children).distinct().sorted(); tag.add("children", JsonArray().also { array -> all.forEach(array::add) }) }
+    /** Replaces a tag's allowed children, for declarations that are the whole truth for that container. */
+    private fun setChildren(tag: JsonObject, children: Collection<String>) { tag.add("children", JsonArray().also { array -> children.distinct().sorted().forEach(array::add) }) }
     private fun tag(tags: JsonObject, name: String, description: String? = null): JsonObject = tags.entrySet().firstOrNull { it.key.equals(name, true) }?.value?.asJsonObject ?: JsonObject().also { value -> value.addProperty("name", name); description?.let { value.addProperty("description", it) }; value.add("attributes", JsonObject()); value.add("children", JsonArray()); tags.add(name, value) }
 
     /**
@@ -165,7 +167,7 @@ object GuideNhSchemaEnhancer {
                 if (attrs.isNotEmpty()) mergeAttrs(tags, call.groupValues[1], attrs)
             }
             Regex("sink\\s*\\.\\s*children\\(\\s*\"([^\"]+)\"\\s*,([\\s\\S]*?)\\)\\s*;").findAll(source.text).forEach { call ->
-                mergeChildren(tags, call.groupValues[1], quoted(call.groupValues[2]))
+                setChildren(tag(tags, call.groupValues[1]), quoted(call.groupValues[2]))
             }
         }
     }
