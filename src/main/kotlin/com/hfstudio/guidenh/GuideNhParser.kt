@@ -62,7 +62,12 @@ object GuideNhParser {
                 val runtimeCapability = resolveGuideNhRuntimeCapability(tag.name, attribute.name)
                 val kind = when {
                     normalized in pageAttributeNames || value.endsWith(".md", true) -> GuideNhReferenceKind.PAGE
-                    isGuideNhResourceReference(value) || normalized in resourceAttributeNames -> GuideNhReferenceKind.RESOURCE
+                    // A namespaced value is a resource reference; a bare file name such as `test1.png` is a
+                    // path relative to the document, which GuideNH resolves as a file. Only the first form
+                    // can be looked up in the resource index, so only it becomes a reference.
+                    normalized in resourceAttributeNames -> value.takeIf { it.contains(':') }
+                        ?.let { GuideNhReferenceKind.RESOURCE }
+                    isGuideNhResourceReference(value) -> GuideNhReferenceKind.RESOURCE
                     runtimeCapability == "items" -> GuideNhReferenceKind.ITEM
                     runtimeCapability == "ores" -> GuideNhReferenceKind.ORE
                     else -> null
