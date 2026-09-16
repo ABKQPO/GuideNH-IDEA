@@ -84,12 +84,33 @@ class GuideNhAnnotator : Annotator {
                 val target = if (reference.kind == GuideNhReferenceKind.PAGE)
                     GuideNhWorkspaceIndex.get(element.project).findPage(reference.value, element.virtualFile)
                 else GuideNhWorkspaceIndex.get(element.project).findResource(reference.value, element.virtualFile)
-                if (target == null && (reference.kind == GuideNhReferenceKind.RESOURCE || reference.value.endsWith(".md", true))) {
+                if (target == null && shouldReportUnresolved(reference)) {
                     val kind = if (reference.kind == GuideNhReferenceKind.PAGE) "page" else "resource"
                     error(holder, reference.range, MyMessageBundle.message("diagnostic.unknown.reference", kind, reference.value))
                 }
             }
         }
+    }
+
+    /**
+     * Whether a missing target is worth reporting.
+     *
+     * A page is always worth reporting. A resource only is when it names a namespace: GuideNH resolves a
+     * destination without one, such as `test1.png`, against the document that contains it, and that form is
+     * how images are normally written, so an editor index that cannot follow the relative path must stay
+     * silent rather than call a valid image unknown.
+     */
+    private fun shouldReportUnresolved(reference: GuideNhReference): Boolean {
+        if (reference.kind == GuideNhReferenceKind.PAGE) return true
+        if (reference.value.endsWith(".md", true)) return true
+        return isNamespacedResource(reference.value)
+    }
+
+    /** True for `namespace:path`, excluding a Windows drive letter, which is a file path instead. */
+    private fun isNamespacedResource(value: String): Boolean {
+        val trimmed = value.trim().removeSurrounding("*").substringBefore('#').trim()
+        val match = Regex("^([A-Za-z0-9_.-]+):(.*)$").find(trimmed) ?: return false
+        return match.groupValues[1].length > 1
     }
 
     private fun error(holder: AnnotationHolder, range: TextRange, message: String) {

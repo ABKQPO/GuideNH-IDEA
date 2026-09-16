@@ -46,6 +46,9 @@ object GuideNhParser {
             val value = unwrapLegacyMarkdownDestination(rawValue)
             val kind = when {
                 value.substringBefore('#').endsWith(".md", true) -> GuideNhReferenceKind.PAGE
+                // Kept as a resource reference even for a bare file name, because hover and go-to-definition
+                // resolve through the resource index. Whether a missing one is an error is decided by the
+                // annotator, which knows a bare name is a path relative to the document.
                 isGuideNhResourceReference(value) -> GuideNhReferenceKind.RESOURCE
                 else -> null
             } ?: continue
@@ -62,12 +65,10 @@ object GuideNhParser {
                 val runtimeCapability = resolveGuideNhRuntimeCapability(tag.name, attribute.name)
                 val kind = when {
                     normalized in pageAttributeNames || value.endsWith(".md", true) -> GuideNhReferenceKind.PAGE
-                    // A namespaced value is a resource reference; a bare file name such as `test1.png` is a
-                    // path relative to the document, which GuideNH resolves as a file. Only the first form
-                    // can be looked up in the resource index, so only it becomes a reference.
-                    normalized in resourceAttributeNames -> value.takeIf { it.contains(':') }
-                        ?.let { GuideNhReferenceKind.RESOURCE }
-                    isGuideNhResourceReference(value) -> GuideNhReferenceKind.RESOURCE
+                    // Classified as a resource even for a bare file name such as `test1.png`, because hover
+                    // and go-to-definition resolve through the resource index. Whether a missing one is an
+                    // error belongs to the annotator, which knows a bare name is a document-relative path.
+                    isGuideNhResourceReference(value) || normalized in resourceAttributeNames -> GuideNhReferenceKind.RESOURCE
                     runtimeCapability == "items" -> GuideNhReferenceKind.ITEM
                     runtimeCapability == "ores" -> GuideNhReferenceKind.ORE
                     else -> null
