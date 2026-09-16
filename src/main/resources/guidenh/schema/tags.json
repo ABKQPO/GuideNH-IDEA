@@ -22,6 +22,18 @@
       "children": [],
       "snippets": []
     },
+    "Arg": {
+      "name": "Arg",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
     "BarChart": {
       "name": "BarChart",
       "kind": "chart",
@@ -531,6 +543,18 @@
       "children": [],
       "snippets": []
     },
+    "Case": {
+      "name": "Case",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {
+        "value": {
+          "type": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
     "Category": {
       "name": "Category",
       "kind": "block",
@@ -920,6 +944,14 @@
       "children": [],
       "snippets": []
     },
+    "Default": {
+      "name": "Default",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
     "del": {
       "name": "del",
       "kind": "inline",
@@ -1020,6 +1052,14 @@
       "children": [],
       "snippets": []
     },
+    "Else": {
+      "name": "Else",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
     "em": {
       "name": "em",
       "kind": "inline",
@@ -1116,6 +1156,26 @@
         "z": {
           "type": "number",
           "valueStyle": "expression"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "Explode": {
+      "name": "Explode",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "Expr": {
+      "name": "Expr",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {
+        "value": {
+          "type": "string"
         }
       },
       "children": [],
@@ -1937,6 +1997,54 @@
       "children": [],
       "snippets": []
     },
+    "If": {
+      "name": "If",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {
+        "test": {
+          "type": "string"
+        }
+      },
+      "children": [],
+      "snippets": [],
+      "preferredChildren": [
+        "Else"
+      ]
+    },
+    "IfEq": {
+      "name": "IfEq",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {
+        "a": {
+          "type": "string"
+        },
+        "b": {
+          "type": "string"
+        }
+      },
+      "children": [],
+      "snippets": [],
+      "preferredChildren": [
+        "Else"
+      ]
+    },
+    "IfExist": {
+      "name": "IfExist",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {
+        "page": {
+          "type": "page"
+        }
+      },
+      "children": [],
+      "snippets": [],
+      "preferredChildren": [
+        "Else"
+      ]
+    },
     "image": {
       "name": "image",
       "kind": "any",
@@ -2169,10 +2277,19 @@
       ],
       "snippets": []
     },
+    "IncludeOnly": {
+      "name": "IncludeOnly",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {},
+      "children": [],
+      "snippets": [],
+      "preferredChildren": []
+    },
     "InputAnnotation": {
       "name": "InputAnnotation",
       "kind": "any",
-      "description": "Declared by the GuideNH syntax registry.",
+      "description": "Generated from GuideNH InputAnnotation compiler source.",
       "attributes": {
         "inputType": {
           "type": "enum",
@@ -2474,6 +2591,14 @@
           "valueStyle": "string"
         }
       },
+      "children": [],
+      "snippets": []
+    },
+    "Len": {
+      "name": "Len",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {},
       "children": [],
       "snippets": []
     },
@@ -2787,6 +2912,14 @@
       "children": [],
       "snippets": []
     },
+    "Lower": {
+      "name": "Lower",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
     "mark": {
       "name": "mark",
       "kind": "inline",
@@ -2845,6 +2978,15 @@
       "children": [],
       "snippets": []
     },
+    "NoInclude": {
+      "name": "NoInclude",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {},
+      "children": [],
+      "snippets": [],
+      "preferredChildren": []
+    },
     "ol": {
       "name": "ol",
       "kind": "block",
@@ -2857,6 +2999,15 @@
       },
       "children": [],
       "snippets": []
+    },
+    "OnlyInclude": {
+      "name": "OnlyInclude",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {},
+      "children": [],
+      "snippets": [],
+      "preferredChildren": []
     },
     "Orientation": {
       "name": "Orientation",
@@ -2884,6 +3035,41 @@
       "kind": "block",
       "description": "Generated from GuideNH p compiler source.",
       "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "PadLeft": {
+      "name": "PadLeft",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "PadRight": {
+      "name": "PadRight",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "Param": {
+      "name": "Param",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {
+        "default": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "pos": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
       "children": [],
       "snippets": []
     },
@@ -3270,6 +3456,14 @@
           "valueStyle": "expression"
         }
       },
+      "children": [],
+      "snippets": []
+    },
+    "Pos": {
+      "name": "Pos",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {},
       "children": [],
       "snippets": []
     },
@@ -3709,6 +3903,14 @@
           "valueStyle": "expression"
         }
       },
+      "children": [],
+      "snippets": []
+    },
+    "Replace": {
+      "name": "Replace",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {},
       "children": [],
       "snippets": []
     },
@@ -4489,6 +4691,22 @@
       "children": [],
       "snippets": []
     },
+    "Switch": {
+      "name": "Switch",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {
+        "test": {
+          "type": "string"
+        }
+      },
+      "children": [],
+      "snippets": [],
+      "preferredChildren": [
+        "Case",
+        "Default"
+      ]
+    },
     "Tab": {
       "name": "Tab",
       "kind": "block",
@@ -4517,6 +4735,22 @@
       },
       "children": [],
       "snippets": []
+    },
+    "Template": {
+      "name": "Template",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "children": [],
+      "snippets": [],
+      "preferredChildren": [
+        "Arg",
+        "Param"
+      ]
     },
     "TextAnnotation": {
       "name": "TextAnnotation",
@@ -4664,6 +4898,14 @@
       "children": [],
       "snippets": []
     },
+    "Trim": {
+      "name": "Trim",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
     "u": {
       "name": "u",
       "kind": "inline",
@@ -4682,6 +4924,22 @@
           "valueStyle": "string"
         }
       },
+      "children": [],
+      "snippets": []
+    },
+    "Upper": {
+      "name": "Upper",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "UrlEncode": {
+      "name": "UrlEncode",
+      "kind": "any",
+      "description": "Declared by the GuideNH syntax registry.",
+      "attributes": {},
       "children": [],
       "snippets": []
     },
