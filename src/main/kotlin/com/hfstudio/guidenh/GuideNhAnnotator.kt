@@ -48,9 +48,10 @@ class GuideNhAnnotator : Annotator {
                     val attributeSchema = schema.attribute(tag.name, attribute.name)
                     if (!seenAttributes.add(attribute.name.lowercase())) {
                         error(holder, attribute.range, MyMessageBundle.message("diagnostic.duplicate.attribute", attribute.name, tag.name))
-                    } else if (attributeSchema == null) {
+                    } else if (attributeSchema == null && !tagSchema.forwardsAttributes) {
+                        // A tag that forwards attributes turns every undeclared one into data, so it is not a mistake.
                         error(holder, attribute.range, MyMessageBundle.message("diagnostic.unknown.attribute", attribute.name, tag.name))
-                    } else {
+                    } else if (attributeSchema != null) {
                         validateAttribute(holder, attribute, attributeSchema)
                     }
                 }

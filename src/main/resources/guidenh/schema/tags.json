@@ -32,7 +32,8 @@
         }
       },
       "children": [],
-      "snippets": []
+      "snippets": [],
+      "forwardsAttributes": true
     },
     "BarChart": {
       "name": "BarChart",
@@ -1165,7 +1166,42 @@
       "name": "Explode",
       "kind": "any",
       "description": "Declared by the GuideNH syntax registry.",
-      "attributes": {},
+      "attributes": {
+        "delimiter": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "index": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "length": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "needle": {
+          "type": "string"
+        },
+        "pad": {
+          "type": "string"
+        },
+        "start": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
       "children": [],
       "snippets": []
     },
@@ -1883,7 +1919,39 @@
       "name": "GregTechActiveController",
       "kind": "any",
       "description": "Generated from GuideNH GregTech active controller option support.",
-      "attributes": {},
+      "attributes": {
+        "dx": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "dy": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "dz": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "id": {
+          "type": "item"
+        },
+        "nbt": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "x": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "y": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "z": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
       "children": [],
       "snippets": []
     },
@@ -2379,6 +2447,10 @@
           "type": "ore",
           "valueStyle": "string"
         },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        },
         "wrap": {
           "type": "string"
         }
@@ -2598,7 +2670,42 @@
       "name": "Len",
       "kind": "any",
       "description": "Declared by the GuideNH syntax registry.",
-      "attributes": {},
+      "attributes": {
+        "delimiter": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "index": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "length": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "needle": {
+          "type": "string"
+        },
+        "pad": {
+          "type": "string"
+        },
+        "start": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
       "children": [],
       "snippets": []
     },
@@ -2916,7 +3023,42 @@
       "name": "Lower",
       "kind": "any",
       "description": "Declared by the GuideNH syntax registry.",
-      "attributes": {},
+      "attributes": {
+        "delimiter": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "index": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "length": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "needle": {
+          "type": "string"
+        },
+        "pad": {
+          "type": "string"
+        },
+        "start": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
       "children": [],
       "snippets": []
     },
@@ -3042,7 +3184,42 @@
       "name": "PadLeft",
       "kind": "any",
       "description": "Declared by the GuideNH syntax registry.",
-      "attributes": {},
+      "attributes": {
+        "delimiter": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "index": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "length": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "needle": {
+          "type": "string"
+        },
+        "pad": {
+          "type": "string"
+        },
+        "start": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
       "children": [],
       "snippets": []
     },
@@ -3050,7 +3227,42 @@
       "name": "PadRight",
       "kind": "any",
       "description": "Declared by the GuideNH syntax registry.",
-      "attributes": {},
+      "attributes": {
+        "delimiter": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "index": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "length": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "needle": {
+          "type": "string"
+        },
+        "pad": {
+          "type": "string"
+        },
+        "start": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
       "children": [],
       "snippets": []
     },
@@ -3463,7 +3675,42 @@
       "name": "Pos",
       "kind": "any",
       "description": "Declared by the GuideNH syntax registry.",
-      "attributes": {},
+      "attributes": {
+        "delimiter": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "index": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "length": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "needle": {
+          "type": "string"
+        },
+        "pad": {
+          "type": "string"
+        },
+        "start": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
       "children": [],
       "snippets": []
     },
@@ -3910,7 +4157,42 @@
       "name": "Replace",
       "kind": "any",
       "description": "Declared by the GuideNH syntax registry.",
-      "attributes": {},
+      "attributes": {
+        "delimiter": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "index": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "length": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "needle": {
+          "type": "string"
+        },
+        "pad": {
+          "type": "string"
+        },
+        "start": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
       "children": [],
       "snippets": []
     },
@@ -4645,7 +4927,42 @@
       "name": "sub",
       "kind": "inline",
       "description": "Generated from GuideNH sub compiler source.",
-      "attributes": {},
+      "attributes": {
+        "delimiter": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "index": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "length": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "needle": {
+          "type": "string"
+        },
+        "pad": {
+          "type": "string"
+        },
+        "start": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
       "children": [],
       "snippets": []
     },
@@ -4750,7 +5067,8 @@
       "preferredChildren": [
         "Arg",
         "Param"
-      ]
+      ],
+      "forwardsAttributes": true
     },
     "TextAnnotation": {
       "name": "TextAnnotation",
@@ -4902,7 +5220,42 @@
       "name": "Trim",
       "kind": "any",
       "description": "Declared by the GuideNH syntax registry.",
-      "attributes": {},
+      "attributes": {
+        "delimiter": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "index": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "length": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "needle": {
+          "type": "string"
+        },
+        "pad": {
+          "type": "string"
+        },
+        "start": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
       "children": [],
       "snippets": []
     },
@@ -4931,7 +5284,42 @@
       "name": "Upper",
       "kind": "any",
       "description": "Declared by the GuideNH syntax registry.",
-      "attributes": {},
+      "attributes": {
+        "delimiter": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "index": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "length": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "needle": {
+          "type": "string"
+        },
+        "pad": {
+          "type": "string"
+        },
+        "start": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
       "children": [],
       "snippets": []
     },
@@ -4939,7 +5327,42 @@
       "name": "UrlEncode",
       "kind": "any",
       "description": "Declared by the GuideNH syntax registry.",
-      "attributes": {},
+      "attributes": {
+        "delimiter": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "index": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "length": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "needle": {
+          "type": "string"
+        },
+        "pad": {
+          "type": "string"
+        },
+        "start": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "width": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
       "children": [],
       "snippets": []
     },

@@ -177,6 +177,10 @@ object GuideNhSchemaEnhancer {
                 // optional, because a container that accepts anything declares itself with no children.
                 setPreferredChildren(tag(tags, call.groupValues[1]), quoted(call.groupValues[2]))
             }
+            Regex("sink\\s*\\.\\s*forwardsAttributes\\(([\\s\\S]*?)\\)\\s*;").findAll(source.text).forEach { call ->
+                // Every attribute is data for this tag, so validation must not report an undeclared one.
+                quoted(call.groupValues[1]).forEach { name -> tag(tags, name).addProperty("forwardsAttributes", true) }
+            }
         }
     }
 

@@ -58,7 +58,8 @@ class GuideNhSchemaService(private val project: Project) {
                     description = objectValue.get("description")?.asString,
                     attributes = attributes,
                     children = objectValue.getAsJsonArray("children")?.map { it.asString } ?: emptyList(),
-                    preferredChildren = objectValue.getAsJsonArray("preferredChildren")?.map { it.asString } ?: emptyList()
+                    preferredChildren = objectValue.getAsJsonArray("preferredChildren")?.map { it.asString } ?: emptyList(),
+                    forwardsAttributes = objectValue.get("forwardsAttributes")?.asBoolean ?: false
                 )
             }
             loadGeneratedTags().forEach { (key, generated) ->
@@ -69,6 +70,7 @@ class GuideNhSchemaService(private val project: Project) {
                     }).filterKeys { it.lowercase() !in generated.removedAttributes },
                     children = if (generated.preferredChildren.isNotEmpty()) existing.children else (existing.children + generated.children).distinct().sorted(),
                     preferredChildren = if (generated.preferredChildren.isNotEmpty()) generated.preferredChildren else existing.preferredChildren,
+                    forwardsAttributes = existing.forwardsAttributes || generated.forwardsAttributes,
                     removedAttributes = existing.removedAttributes + generated.removedAttributes
                 )
             }
@@ -102,6 +104,7 @@ class GuideNhSchemaService(private val project: Project) {
                     attributes = attributes.filterKeys { it.lowercase() !in removed },
                     children = tag.getAsJsonArray("children")?.map { it.asString } ?: emptyList(),
                     preferredChildren = tag.getAsJsonArray("preferredChildren")?.map { it.asString } ?: emptyList(),
+                    forwardsAttributes = tag.get("forwardsAttributes")?.asBoolean ?: false,
                     removedAttributes = removed
                 )
             }.orEmpty()
