@@ -11,6 +11,7 @@ import com.intellij.openapi.fileEditor.FileDocumentManagerListener
 import com.intellij.openapi.editor.EditorFactory
 import com.intellij.openapi.editor.event.DocumentEvent
 import com.intellij.openapi.editor.event.DocumentListener
+import java.io.IOException
 import java.util.concurrent.ConcurrentHashMap
 
 data class GuideNhPage(
@@ -109,8 +110,21 @@ class GuideNhWorkspaceIndex(private val project: Project) {
             .sortedWith(compareBy<GuideNhPage> { it.relativePath }.thenComparator { left, right -> localeRank(left, from).compareTo(localeRank(right, from)) }).take(200)
     }
 
-    fun queryResources(prefix: String, from: VirtualFile): List<GuideNhResource> {
-        ensureScanned()
+    /**
+     * The named arguments a template declares, read from its body. GuideNH resolves these from the template
+     * page, so the editor reads the same file the mod indexes under `templates/`.
+     */
+    fun templateParameterNames(templateName: String, from: VirtualFile): List<String> {
+        val file = findPage("templates/${templateName.removeSuffix(".md")}.md", from)?.file ?: return emptyList()
+        val text = try {
+            String(file.contentsToByteArray(), Charsets.UTF_8)
+        } catch (ignored: IOException) {
+            return emptyList()
+        }
+        return extractTemplateParameterNames(text)
+    }
+
+    fun queryResources(prefix: String, from: VirtualFile): List<GuideNhResource> {        ensureScanned()
         val normalized = normalizeResourceReference(prefix, from)
         val namespace = normalized.substringBefore(':', "").takeIf { normalized.contains(':') }
         val relative = normalized.substringAfter(':', normalized)
@@ -291,4 +305,19 @@ class GuideNhWorkspaceIndex(private val project: Project) {
     }
 
     companion object { fun get(project: Project): GuideNhWorkspaceIndex = project.getService(GuideNhWorkspaceIndex::class.java) }
+}
+
+/**
+ * Every parameter name a template body declares. Both `<Param name="x" />` and the attribute-value form
+ * `id={<Param name="x" />}` match, because the pattern only looks for the tag and its name attribute. A
+ * positional `<Param pos="1" />` has no name, so it contributes nothing a name completion could offer.
+ */
+internal fun extractTemplateParameterNames(text: String): List<String> {
+    val pattern = Regex("""<Param\b[^>]*?\bname\s*=\s*(?:"([^"]*)"|'([^']*)')""", RegexOption.IGNORE_CASE)
+    val names = linkedSetOf<String>()
+    for (match in pattern.findAll(text)) {
+        val name = (match.groupValues[1].ifEmpty { match.groupValues[2] }).trim()
+        if (name.isNotEmpty()) names += name
+    }
+    return names.toList()
 }

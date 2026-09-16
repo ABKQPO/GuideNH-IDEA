@@ -158,11 +158,37 @@ class GuideNhCompletionContributor : CompletionContributor() {
                 val openTag = Regex("<([A-Za-z][A-Za-z0-9]*)\\s+[^>]*?([A-Za-z_][\\w.-]*)?$").find(before)
                 if (openTag != null) {
                     val tagName = openTag.groupValues[1]
+                    val prefix = openTag.groupValues[2]
+                    val declared = mutableSetOf<String>()
                     schema.tag(tagName)?.attributes?.forEach { (name, attr) ->
+                        declared += name.lowercase()
+                        if (!name.startsWith(prefix, true)) return@forEach
                         result.addElement(LookupElementBuilder.create(name).withTypeText(attr.type).withTailText("  ${attr.description ?: ""}").withInsertHandler { insertionContext, _ ->
                             val suffix = createAttributeInsertion(attr)
                             if (suffix.isNotEmpty()) insertionContext.document.insertString(insertionContext.tailOffset, suffix)
                         })
+                    }
+                    // A <Template> call takes its arguments as attributes, so the named template's own
+                    // parameters are offered alongside the tag's declared ones.
+                    if (tagName.equals("Template", true)) {
+                        val templateName = Regex("\\bname\\s*=\\s*(?:\"([^\"]*)\"|'([^']*)')").find(before.substringAfter('<'))
+                        val target = templateName?.let { it.groupValues[1].ifEmpty { it.groupValues[2] } }
+                        if (!target.isNullOrBlank()) {
+                            GuideNhWorkspaceIndex.get(file.project).templateParameterNames(target, file.virtualFile)
+                                .filter { !declared.contains(it.lowercase()) }
+                                .filter { it.startsWith(prefix, true) }
+                                .forEach { name ->
+                                    result.addElement(
+                                        LookupElementBuilder.create(name)
+                                            .withTypeText(MyMessageBundle.message("completion.template.argument"))
+                                            .withTailText("  $target")
+                                            .withInsertHandler { insertionContext, _ ->
+                                                insertionContext.document.insertString(insertionContext.tailOffset, "=\"\"")
+                                                insertionContext.editor.caretModel.moveToOffset(insertionContext.tailOffset - 1)
+                                            }
+                                    )
+                                }
+                        }
                     }
                     return
                 }
