@@ -115,13 +115,29 @@ class GuideNhWorkspaceIndex(private val project: Project) {
      * page, so the editor reads the same file the mod indexes under `templates/`.
      */
     fun templateParameterNames(templateName: String, from: VirtualFile): List<String> {
-        val file = findPage("templates/${templateName.removeSuffix(".md")}.md", from)?.file ?: return emptyList()
+        val file = findTemplate(templateName, from)?.file ?: return emptyList()
         val text = try {
             String(file.contentsToByteArray(), Charsets.UTF_8)
         } catch (ignored: IOException) {
             return emptyList()
         }
         return extractTemplateParameterNames(text)
+    }
+
+    /** Finds a template using GuideNH's MediaWiki-compatible name rules, including nested templates. */
+    fun findTemplate(templateName: String, from: VirtualFile): GuideNhPage? {
+        ensureScanned()
+        val normalizedName = normalizeGuideNhTemplateName(templateName)
+        if (normalizedName.isEmpty()) return null
+        val sourceNamespace = Regex("/assets/([^/]+)/guidenh/", RegexOption.IGNORE_CASE)
+            .find(from.path.replace('\\', '/'))?.groupValues?.get(1)
+        val candidates = pages.values.filter { page ->
+            val pageTemplateName = guideNhTemplateName(page.relativePath)
+            pageTemplateName != null &&
+                normalizeGuideNhTemplateName(pageTemplateName) == normalizedName &&
+                (sourceNamespace == null || page.namespace.equals(sourceNamespace, true))
+        }
+        return selectPage(candidates, from)
     }
 
     fun queryResources(prefix: String, from: VirtualFile): List<GuideNhResource> {        ensureScanned()
@@ -305,6 +321,21 @@ class GuideNhWorkspaceIndex(private val project: Project) {
     }
 
     companion object { fun get(project: Project): GuideNhWorkspaceIndex = project.getService(GuideNhWorkspaceIndex::class.java) }
+}
+
+/** Returns the logical name of a page below the reserved templates/ prefix. */
+private fun guideNhTemplateName(relativePath: String): String? {
+    val normalized = relativePath.replace('\\', '/')
+    val marker = normalized.lastIndexOf("templates/", ignoreCase = true)
+    if (marker < 0 || !normalized.endsWith(".md", true)) return null
+    val name = normalized.substring(marker + "templates/".length, normalized.length - ".md".length)
+    return name.takeIf { it.isNotEmpty() }
+}
+
+/** Mirrors MediaWikiTemplateName.normalize in GuideNH-NH. */
+private fun normalizeGuideNhTemplateName(value: String): String {
+    val normalized = value.replace('_', ' ').trim().replace(Regex("\\s+"), " ")
+    return normalized.takeIf { it.isNotEmpty() }?.replaceFirstChar { it.uppercase() }.orEmpty()
 }
 
 /**
