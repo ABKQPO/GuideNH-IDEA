@@ -607,6 +607,11 @@
           "type": "string",
           "valueStyle": "string"
         },
+        "locked": {
+          "type": "boolean",
+          "valueStyle": "expression",
+          "description": "Locks the explicitly supplied tier or channel value during interactive preview."
+        },
         "name": {
           "type": "string",
           "valueStyle": "string"
@@ -2297,6 +2302,11 @@
         "gtPlaceHatches": {
           "type": "boolean",
           "valueStyle": "bare"
+        },
+        "locked": {
+          "type": "boolean",
+          "valueStyle": "expression",
+          "description": "Locks the explicitly supplied tier or channel value during interactive preview."
         },
         "name": {
           "type": "string",
@@ -5190,6 +5200,11 @@
         "expr": {
           "type": "number",
           "valueStyle": "string"
+        },
+        "locked": {
+          "type": "boolean",
+          "valueStyle": "expression",
+          "description": "Locks the explicitly supplied tier or channel value during interactive preview."
         },
         "tier": {
           "type": "number",

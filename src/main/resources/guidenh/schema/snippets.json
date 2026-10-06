@@ -27,6 +27,16 @@
       ],
       "description": "Insert a StructureLib scene import."
     },
+    "guidenh.lockedStructureLibOptions": {
+      "prefix": "LockedStructureLib",
+      "body": [
+        "<ImportStructureLib controller=\"${1:gregtech:gt.blockmachines:2741}\">",
+        "  <Tier value=\"${2:4}\" locked={true} />",
+        "  <Channel name=\"${3:voltage}\" value=\"${4:4}\" locked={true} />",
+        "</ImportStructureLib>"
+      ],
+      "description": "Insert StructureLib defaults locked against interactive changes."
+    },
     "guidenh.gtBlock": {
       "prefix": "GTBlock",
       "body": [
