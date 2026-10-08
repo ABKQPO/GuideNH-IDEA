@@ -133,6 +133,24 @@
     if (chip.tagName === 'A') chip.href = '#'; element.replaceWith(chip);
   });
 
+  all('amount').forEach(element => {
+    const value = number(attr(element, 'value'));
+    const unit = (attr(element, 'unit') || 'none').toLowerCase();
+    const formatMode = (attr(element, 'format') || 'default').toLowerCase();
+    const decimalsValue = Number(attr(element, 'decimals'));
+    const decimals = Number.isInteger(decimalsValue) && decimalsValue >= 0 ? decimalsValue : undefined;
+    if (!Number.isFinite(value) || !['none', 'item', 'fluid'].includes(unit)) return;
+    const fractionOptions = Number.isInteger(decimals) ? { maximumFractionDigits: decimals } : { maximumFractionDigits: 20 };
+    let rendered;
+    if (formatMode === 'compact') rendered = new Intl.NumberFormat(undefined, { notation: 'compact', ...fractionOptions }).format(value);
+    else if (formatMode === 'scientific') rendered = value.toExponential(Number.isInteger(decimals) ? decimals : 2).replace(/\.0+(?=e)/, '');
+    else rendered = new Intl.NumberFormat(undefined, fractionOptions).format(value);
+    let fluidUnit = 'mB';
+    try { const stored = localStorage.getItem('guidenh.amount.fluidUnit'); if (stored === 'L' || stored === 'mB') fluidUnit = stored; } catch (_) {}
+    element.textContent = rendered + (unit === 'fluid' ? ' ' + fluidUnit : '');
+    element.classList.add('guidenh-amount');
+  });
+
   const floatingConfig = element => {
     const payload = element.getAttribute('data-guidenh-floating');
     if (payload) {

@@ -22,6 +22,44 @@
       "children": [],
       "snippets": []
     },
+    "Amount": {
+      "name": "Amount",
+      "kind": "inline",
+      "description": "Formats a number with an optional registered unit. An omitted unit and item unit add no suffix; fluid uses the GTNHLib fluid preference.",
+      "attributes": {
+        "value": {
+          "type": "number",
+          "valueStyle": "expression"
+        },
+        "unit": {
+          "type": "enum",
+          "valueStyle": "string",
+          "values": [
+            "none",
+            "item",
+            "fluid"
+          ]
+        },
+        "format": {
+          "type": "enum",
+          "valueStyle": "string",
+          "values": [
+            "default",
+            "plain",
+            "compact",
+            "scientific"
+          ]
+        },
+        "decimals": {
+          "type": "number",
+          "valueStyle": "expression"
+        }
+      },
+      "children": [],
+      "snippets": [
+        "<Amount value=\"${1:250}\" unit=\"${2:fluid}\" />"
+      ]
+    },
     "Arg": {
       "name": "Arg",
       "kind": "any",

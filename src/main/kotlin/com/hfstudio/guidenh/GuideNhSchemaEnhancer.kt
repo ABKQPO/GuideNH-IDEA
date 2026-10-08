@@ -14,6 +14,7 @@ object GuideNhSchemaEnhancer {
         scenes(tags, sources)
         functionGraph(tags, source(sources, "FunctionGraphAttrs")?.text)
         recipes(tags)
+        amount(tags)
         references(tags)
         contributors(tags, sources)
         markdownExtensions(root, sources)
@@ -85,6 +86,20 @@ object GuideNhSchemaEnhancer {
     private fun recipes(tags: JsonObject) {
         val attrs = mapOf("input" to string(), "output" to string(), "align" to string(), "float" to string(), "wrap" to string())
         listOf("Recipe", "Usage", "RecipeFor", "RecipeUsage", "RecipesFor", "RecipesUsage").forEach { mergeAttrs(tags, it, attrs) }
+    }
+
+    private fun amount(tags: JsonObject) {
+        define(
+            tags,
+            "Amount",
+            "Formats a number with an optional registered unit. An omitted unit and item unit add no suffix; fluid uses the GTNHLib fluid preference.",
+            mapOf(
+                "value" to number("expression"),
+                "unit" to enum(listOf("none", "item", "fluid")),
+                "format" to enum(listOf("default", "plain", "compact", "scientific")),
+                "decimals" to number("expression")
+            )
+        )
     }
 
     private fun references(tags: JsonObject) {

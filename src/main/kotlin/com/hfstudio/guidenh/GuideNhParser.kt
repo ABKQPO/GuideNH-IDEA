@@ -185,7 +185,7 @@ object GuideNhParser {
         val chars = text.toCharArray()
         val ranges = mutableListOf<IntRange>()
         Regex("\\{/\\*[\\s\\S]*?\\*/\\}").findAll(text).forEach { ranges += it.range }
-        Regex("(?m)^([`~]{3,})[^\\r\\n]*(?:\\r?\\n[\\s\\S]*?^\\1[ \\t]*$|[\\s\\S]*$)").findAll(text).forEach { ranges += it.range }
+        Regex("(?m)^[ \\t]*([`~]{3,})[^\\r\\n]*(?:\\r?\\n[\\s\\S]*?^[ \\t]*\\1[ \\t]*$|[\\s\\S]*$)").findAll(text).forEach { ranges += it.range }
         collectInlineCodeRanges(text).forEach { ranges += it }
         for (range in ranges) for (i in range) if (chars[i] != '\n' && chars[i] != '\r') chars[i] = ' '
         return String(chars)
