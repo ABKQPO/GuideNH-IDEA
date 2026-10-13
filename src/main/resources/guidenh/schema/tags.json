@@ -5084,23 +5084,6 @@
       "children": [],
       "snippets": []
     },
-    "table": {
-      "name": "table",
-      "kind": "block",
-      "description": "Generated from GuideNH table compiler source.",
-      "attributes": {
-        "align": {
-          "type": "string",
-          "valueStyle": "string"
-        },
-        "content": {
-          "type": "string",
-          "valueStyle": "string"
-        }
-      },
-      "children": [],
-      "snippets": []
-    },
     "Template": {
       "name": "Template",
       "kind": "any",
@@ -5516,6 +5499,502 @@
           "valueStyle": "string"
         },
         "z": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "table": {
+      "name": "table",
+      "kind": "block",
+      "description": "HTML table with column width hints and merged cells.",
+      "attributes": {
+        "widths": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "align": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "width": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "border": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "cellpadding": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "cellspacing": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "summary": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "frame": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "rules": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "bordercolor": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "bgcolor": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [
+        "caption",
+        "colgroup",
+        "thead",
+        "tbody",
+        "tfoot",
+        "tr"
+      ],
+      "snippets": []
+    },
+    "caption": {
+      "name": "caption",
+      "kind": "any",
+      "description": "HTML table caption.",
+      "attributes": {
+        "align": {
+          "type": "enum",
+          "valueStyle": "string",
+          "values": [
+            "left",
+            "center",
+            "right"
+          ]
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "colgroup": {
+      "name": "colgroup",
+      "kind": "any",
+      "description": "HTML table column group.",
+      "attributes": {
+        "width": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "span": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "align": {
+          "type": "enum",
+          "valueStyle": "string",
+          "values": [
+            "left",
+            "center",
+            "right"
+          ]
+        },
+        "valign": {
+          "type": "enum",
+          "valueStyle": "string",
+          "values": [
+            "top",
+            "middle",
+            "bottom",
+            "baseline"
+          ]
+        },
+        "char": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "charoff": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "bgcolor": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [
+        "col"
+      ],
+      "snippets": []
+    },
+    "col": {
+      "name": "col",
+      "kind": "any",
+      "description": "HTML table column.",
+      "attributes": {
+        "width": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "span": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "align": {
+          "type": "enum",
+          "valueStyle": "string",
+          "values": [
+            "left",
+            "center",
+            "right"
+          ]
+        },
+        "valign": {
+          "type": "enum",
+          "valueStyle": "string",
+          "values": [
+            "top",
+            "middle",
+            "bottom",
+            "baseline"
+          ]
+        },
+        "char": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "charoff": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "bgcolor": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "thead": {
+      "name": "thead",
+      "kind": "any",
+      "description": "HTML table thead section.",
+      "attributes": {
+        "align": {
+          "type": "enum",
+          "valueStyle": "string",
+          "values": [
+            "left",
+            "center",
+            "right"
+          ]
+        },
+        "valign": {
+          "type": "enum",
+          "valueStyle": "string",
+          "values": [
+            "top",
+            "middle",
+            "bottom",
+            "baseline"
+          ]
+        },
+        "char": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "charoff": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "bgcolor": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [
+        "tr"
+      ],
+      "snippets": []
+    },
+    "tbody": {
+      "name": "tbody",
+      "kind": "any",
+      "description": "HTML table tbody section.",
+      "attributes": {
+        "align": {
+          "type": "enum",
+          "valueStyle": "string",
+          "values": [
+            "left",
+            "center",
+            "right"
+          ]
+        },
+        "valign": {
+          "type": "enum",
+          "valueStyle": "string",
+          "values": [
+            "top",
+            "middle",
+            "bottom",
+            "baseline"
+          ]
+        },
+        "char": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "charoff": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "bgcolor": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [
+        "tr"
+      ],
+      "snippets": []
+    },
+    "tfoot": {
+      "name": "tfoot",
+      "kind": "any",
+      "description": "HTML table tfoot section.",
+      "attributes": {
+        "align": {
+          "type": "enum",
+          "valueStyle": "string",
+          "values": [
+            "left",
+            "center",
+            "right"
+          ]
+        },
+        "valign": {
+          "type": "enum",
+          "valueStyle": "string",
+          "values": [
+            "top",
+            "middle",
+            "bottom",
+            "baseline"
+          ]
+        },
+        "char": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "charoff": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "bgcolor": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [
+        "tr"
+      ],
+      "snippets": []
+    },
+    "tr": {
+      "name": "tr",
+      "kind": "any",
+      "description": "HTML table row.",
+      "attributes": {
+        "align": {
+          "type": "enum",
+          "valueStyle": "string",
+          "values": [
+            "left",
+            "center",
+            "right"
+          ]
+        },
+        "valign": {
+          "type": "enum",
+          "valueStyle": "string",
+          "values": [
+            "top",
+            "middle",
+            "bottom",
+            "baseline"
+          ]
+        },
+        "char": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "charoff": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "bgcolor": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [
+        "th",
+        "td"
+      ],
+      "snippets": [],
+      "align": {
+        "type": "enum",
+        "valueStyle": "string",
+        "values": [
+          "left",
+          "center",
+          "right"
+        ]
+      }
+    },
+    "td": {
+      "name": "td",
+      "kind": "any",
+      "description": "HTML table data cell.",
+      "attributes": {
+        "colspan": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "rowspan": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "align": {
+          "type": "enum",
+          "valueStyle": "string",
+          "values": [
+            "left",
+            "center",
+            "right"
+          ]
+        },
+        "valign": {
+          "type": "enum",
+          "valueStyle": "string",
+          "values": [
+            "top",
+            "middle",
+            "bottom",
+            "baseline"
+          ]
+        },
+        "headers": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "width": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "height": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "axis": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "char": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "charoff": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "bgcolor": {
+          "type": "string",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": []
+    },
+    "th": {
+      "name": "th",
+      "kind": "any",
+      "description": "HTML table header cell.",
+      "attributes": {
+        "colspan": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "rowspan": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "align": {
+          "type": "enum",
+          "valueStyle": "string",
+          "values": [
+            "left",
+            "center",
+            "right"
+          ]
+        },
+        "valign": {
+          "type": "enum",
+          "valueStyle": "string",
+          "values": [
+            "top",
+            "middle",
+            "bottom",
+            "baseline"
+          ]
+        },
+        "headers": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "width": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "height": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "axis": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "char": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "charoff": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "bgcolor": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "scope": {
+          "type": "enum",
+          "valueStyle": "string",
+          "values": [
+            "col",
+            "row",
+            "colgroup",
+            "rowgroup"
+          ]
+        },
+        "abbr": {
           "type": "string",
           "valueStyle": "string"
         }

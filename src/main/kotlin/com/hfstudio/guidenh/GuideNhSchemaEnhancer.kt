@@ -15,6 +15,7 @@ object GuideNhSchemaEnhancer {
         functionGraph(tags, source(sources, "FunctionGraphAttrs")?.text)
         recipes(tags)
         amount(tags)
+        tables(tags)
         references(tags)
         contributors(tags, sources)
         markdownExtensions(root, sources)
@@ -100,6 +101,32 @@ object GuideNhSchemaEnhancer {
                 "decimals" to number("expression")
             )
         )
+    }
+
+    private fun tables(tags: JsonObject) {
+        define(tags, "table", "HTML table with column width hints and merged cells",
+            mapOf("widths" to string(), "align" to string(), "width" to string(), "border" to number(),
+                "cellpadding" to number(), "cellspacing" to number(), "summary" to string(),
+                "frame" to string(), "rules" to string(), "bordercolor" to string(), "bgcolor" to string()),
+            listOf("caption", "colgroup", "thead", "tbody", "tfoot", "tr"))
+        define(tags, "caption", "HTML table caption", mapOf("align" to enum(listOf("left", "center", "right"))))
+        val sectionAttributes = mapOf("align" to enum(listOf("left", "center", "right")),
+            "valign" to enum(listOf("top", "middle", "bottom", "baseline")),
+            "char" to string(), "charoff" to string(), "bgcolor" to string())
+        define(tags, "colgroup", "HTML table column group",
+            mapOf("width" to string(), "span" to number()) + sectionAttributes, listOf("col"))
+        define(tags, "col", "HTML table column", mapOf("width" to string(), "span" to number()) + sectionAttributes)
+        listOf("thead", "tbody", "tfoot").forEach { define(tags, it, "HTML table row group", sectionAttributes, listOf("tr")) }
+        define(tags, "tr", "HTML table row", sectionAttributes, listOf("th", "td"))
+        val cell = mapOf("colspan" to number(), "rowspan" to number(),
+            "align" to enum(listOf("left", "center", "right")),
+            "valign" to enum(listOf("top", "middle", "bottom", "baseline")),
+            "headers" to string(), "width" to string(), "height" to string(), "axis" to string(),
+            "char" to string(), "charoff" to string(), "bgcolor" to string())
+        define(tags, "td", "HTML table data cell", cell)
+        define(tags, "th", "HTML table header cell", cell + mapOf(
+            "scope" to enum(listOf("col", "row", "colgroup", "rowgroup")),
+            "abbr" to string()))
     }
 
     private fun references(tags: JsonObject) {
