@@ -4,6 +4,10 @@ Kotlin IntelliJ IDEA support for GuideNH Markdown authoring. The plugin keeps th
 
 Implemented editor features include schema diagnostics and quick fixes, project-local Kotlin schema extraction, page/resource/item/ore references, definitions, Find Usages, hover documentation, GuideNH-aware completion and indentation, workspace symbols, locale-aware indexing, IntelliJ Live Template snippets, runtime bridge actions/status, runtime semantic/preview adapters, viewport-bounded item PNG inlays, and native item picker/drop handling. The picker previews and writes ItemStack ids with meta/NBT/count controls when the target schema supports them.
 
+The plugin also bundles the offline Ponder JSON schema at `src/main/resources/guidenh/schema/ponder_schema.json`. Add
+`guidenh://schema/ponder.json` to a Ponder document's `$schema` field and associate that URI with the bundled file in
+IntelliJ's JSON Schema Mappings when editing standalone Ponder JSON files.
+
 The runtime bridge uses GuideNH protocol version 1 (`hello`, `capabilities`, `semantic.query`, `document.validate`, `preview.search`, and `preview.resolve`) with local-host validation, token configuration, reconnect, bounded envelopes, capability negotiation, and guarded semantic/diagnostic payloads by default.
 
 Build locally with:
