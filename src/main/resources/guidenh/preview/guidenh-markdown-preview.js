@@ -35,13 +35,104 @@
   };
   const format = value => Number.isFinite(value) ? Number(value.toFixed(4)).toString() : 'undefined';
 
+  const parseGuideTableRow = line => {
+    let source = String(line || '').trim().replace(/^\|/, ''), cells = [], value = '';
+    for (let index = 0; index < source.length;) {
+      if (source[index] === '\\' && index + 1 < source.length) { value += source.slice(index, index + 2); index += 2; continue; }
+      if (source[index] !== '|') { value += source[index++]; continue; }
+      let end = index + 1; while (end < source.length && source[end] === '|') end++;
+      const span = Math.max(1, end - index);
+      cells.push({ text: value.replaceAll('\\|', '|').trim(), span }); value = ''; index = end;
+      if (cells.length >= 2048) return cells;
+    }
+    if (value.trim()) cells.push({ text: value.replaceAll('\\|', '|').trim(), span: 1 });
+    return cells;
+  };
+  const tableDelimiter = line => /^\s*\|?\s*:?-{1,}:?\s*(?:\|\s*:?-{1,}:?\s*)+\|?\s*$/.test(line || '');
+  const isGuideTable = lines => lines.length > 1 && /^\s*\|?.*\|.*$/.test(lines[0]) && (tableDelimiter(lines[1]) || tableDelimiter(lines[0]));
+  const enhanceMarkdownSpanTables = () => {
+    all('p').forEach(paragraph => {
+      if (paragraph.closest('pre,code,table')) return;
+      const lines = (paragraph.textContent || '').split(/\r?\n/).map(line => line.trim()).filter(Boolean);
+      const headerless = tableDelimiter(lines[0]);
+      if (!isGuideTable(lines) || (!headerless && !lines.some(line => /\|\|/.test(line) || /\^\^/.test(line)))) return;
+      const sourceRows = [];
+      const endRow = lines.length;
+      const firstRow = headerless ? 1 : 0;
+      for (let sourceIndex = firstRow; sourceIndex < endRow; sourceIndex++) {
+        if (!headerless && sourceIndex === 1) continue;
+        let row = parseGuideTableRow(lines[sourceIndex]);
+        while (sourceIndex + 1 < endRow && /\\\s*$/.test(lines[sourceIndex])) {
+          const next = parseGuideTableRow(lines[++sourceIndex]);
+          row = row.map((cell, index) => ({ text: `${cell.text.replace(/\\\s*$/, '').trim()}${cell.text.trim() ? ' <br> ' : ''}${next[index]?.text || ''}`, span: cell.span }));
+        }
+        sourceRows.push(row);
+      }
+      const rows = [];
+      let previousRowCells = [];
+      sourceRows.forEach((sourceRow, rowIndex) => {
+        const output = []; const continuedTargets = []; let column = 0;
+        sourceRow.forEach(sourceCell => {
+          let textValue = sourceCell.text;
+          const continuation = /^\^\^\s*/.test(textValue);
+          if (continuation) textValue = textValue.replace(/^\^\^\s*/, '');
+          if (continuation) {
+            let target = null;
+            for (let targetIndex = previousRowCells.length - 1; targetIndex >= 0; targetIndex -= 1) {
+              const candidate = previousRowCells[targetIndex];
+              if (candidate.column <= column && column < candidate.column + candidate.colspan) {
+                target = candidate;
+                break;
+              }
+            }
+            if (target) {
+              target.parts.push(textValue); target.rowspan += 1; column = target.column + target.colspan;
+              if (!continuedTargets.includes(target)) continuedTargets.push(target);
+              return;
+            }
+          }
+          const cell = { row: rowIndex, column, colspan: sourceCell.span, rowspan: 1, parts: [textValue] };
+          output.push(cell); column += sourceCell.span;
+        });
+        rows.push(output);
+        previousRowCells = continuedTargets.concat(output);
+      });
+      const renderCellMarkdown = value => esc(value)
+        .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_match, alt, source) => {
+          const normalizedSource = String(source || '').trim();
+          const safeSource = /^(?:https?:|data:image\/(?:png|gif|jpe?g|webp);base64,)/i.test(normalizedSource)
+            || !/^[a-z][a-z0-9+.-]*:/i.test(normalizedSource);
+          return safeSource ? `<img alt="${alt}" src="${normalizedSource}">` : alt;
+        })
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+        .replace(/__([^_]+)__/g, '<strong>$1</strong>')
+        .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+        .replace(/_([^_]+)_/g, '<em>$1</em>')
+        .replace(/`([^`]+)`/g, '<code>$1</code>')
+        .replace(/\$\$([^$]+)\$\$/g, (_match, formula) => `<span class="guidenh-latex">${formula}</span>`);
+      const table = document.createElement('table'); table.className = 'guidenh-markdown-table';
+      const head = document.createElement('thead'); const body = document.createElement('tbody');
+      rows.forEach((row, index) => {
+        const tr = document.createElement('tr'); row.forEach(cell => {
+          const element = document.createElement(!headerless && index === 0 ? 'th' : 'td');
+          if (cell.colspan > 1) element.colSpan = cell.colspan;
+          if (cell.rowspan > 1) element.rowSpan = cell.rowspan;
+          element.innerHTML = cell.parts.map(renderCellMarkdown).join('<br>'); tr.appendChild(element);
+        });
+        (!headerless && index === 0 ? head : body).appendChild(tr);
+      });
+      table.append(head, body); paragraph.replaceWith(table);
+    });
+  };
+  enhanceMarkdownSpanTables();
+
   // Inline extensions run before containers so rich Plot/Tooltip content is retained.
   const markers = [['==', 'guidenh-highlight'], ['++', 'guidenh-underline'], ['^^', 'guidenh-wavy'], ['::', 'guidenh-dotted']];
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
   const textNodes = []; while (walker.nextNode()) textNodes.push(walker.currentNode);
   textNodes.forEach(node => {
     if (['CODE', 'PRE', 'SCRIPT', 'STYLE'].includes(node.parentElement && node.parentElement.tagName)) return;
-    let html = node.nodeValue, changed = false;
+    let html = esc(node.nodeValue), changed = false;
     markers.forEach(([marker, className]) => {
       const escaped = marker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const pattern = new RegExp(escaped + '([^\\n]+?)' + escaped, 'g');

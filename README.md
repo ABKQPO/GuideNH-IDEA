@@ -8,6 +8,9 @@ The plugin also bundles the offline Ponder JSON schema at `src/main/resources/gu
 `guidenh://schema/ponder.json` to a Ponder document's `$schema` field and associate that URI with the bundled file in
 IntelliJ's JSON Schema Mappings when editing standalone Ponder JSON files.
 
+The bundled Markdown preview supports GuideNH table extensions for column spans (`||`), row spans (`^^`), multiline
+rows (a trailing backslash), headerless tables, cell Markdown, grouped HTML rows, and cell inline attributes.
+
 The runtime bridge uses GuideNH protocol version 1 (`hello`, `capabilities`, `semantic.query`, `document.validate`, `preview.search`, and `preview.resolve`) with local-host validation, token configuration, reconnect, bounded envelopes, capability negotiation, and guarded semantic/diagnostic payloads by default.
 
 Build locally with:

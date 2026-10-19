@@ -5515,6 +5515,10 @@
           "type": "string",
           "valueStyle": "string"
         },
+        "header": {
+          "type": "boolean",
+          "valueStyle": "string"
+        },
         "align": {
           "type": "string",
           "valueStyle": "string"
@@ -5919,6 +5923,18 @@
         "bgcolor": {
           "type": "string",
           "valueStyle": "string"
+        },
+        "color": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "background": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "style": {
+          "type": "string",
+          "valueStyle": "string"
         }
       },
       "children": [],
@@ -5981,6 +5997,18 @@
           "valueStyle": "string"
         },
         "bgcolor": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "color": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "background": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "style": {
           "type": "string",
           "valueStyle": "string"
         },

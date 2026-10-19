@@ -105,7 +105,7 @@ object GuideNhSchemaEnhancer {
 
     private fun tables(tags: JsonObject) {
         define(tags, "table", "HTML table with column width hints and merged cells",
-            mapOf("widths" to string(), "align" to string(), "width" to string(), "border" to number(),
+            mapOf("widths" to string(), "header" to boolean(), "align" to string(), "width" to string(), "border" to number(),
                 "cellpadding" to number(), "cellspacing" to number(), "summary" to string(),
                 "frame" to string(), "rules" to string(), "bordercolor" to string(), "bgcolor" to string()),
             listOf("caption", "colgroup", "thead", "tbody", "tfoot", "tr"))
@@ -122,7 +122,8 @@ object GuideNhSchemaEnhancer {
             "align" to enum(listOf("left", "center", "right")),
             "valign" to enum(listOf("top", "middle", "bottom", "baseline")),
             "headers" to string(), "width" to string(), "height" to string(), "axis" to string(),
-            "char" to string(), "charoff" to string(), "bgcolor" to string())
+            "char" to string(), "charoff" to string(), "bgcolor" to string(),
+            "color" to string(), "background" to string(), "style" to string())
         define(tags, "td", "HTML table data cell", cell)
         define(tags, "th", "HTML table header cell", cell + mapOf(
             "scope" to enum(listOf("col", "row", "colgroup", "rowgroup")),
