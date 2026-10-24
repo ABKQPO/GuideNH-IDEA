@@ -42,7 +42,7 @@ object GuideNhSchemaEnhancer {
     }
 
     private fun containers(tags: JsonObject) {
-        define(tags, "ContentTabs", "GuideNH content tab container", mapOf("color" to color(), "default" to string(), "defaultIndex" to number(), "icon" to string(), "iconItem" to item(), "iconPng" to string(), "icon_item" to item(), "icon_png" to string(), "title" to string(), "width" to number(), "height" to number()), listOf("Tab"))
+        define(tags, "ContentTabs", "GuideNH content tab container", mapOf("background" to color(), "color" to color(), "default" to string(), "defaultIndex" to number(), "icon" to string(), "iconItem" to item(), "iconPng" to string(), "icon_item" to item(), "icon_png" to string(), "title" to string(), "width" to number(), "height" to number()), listOf("Tab"))
         define(tags, "Tab", "GuideNH content tab", mapOf("title" to string()))
         define(tags, "summary", "GuideNH details summary")
         define(tags, "NodeContent", "GuideNH Mermaid rich node content", mapOf("id" to string()))

@@ -907,6 +907,9 @@
       "kind": "block",
       "description": "Generated from GuideNH ContentTabs compiler source.",
       "attributes": {
+        "background": {
+          "type": "color"
+        },
         "color": {
           "type": "color"
         },

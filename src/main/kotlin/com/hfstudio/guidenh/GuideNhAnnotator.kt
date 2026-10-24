@@ -113,6 +113,8 @@ class GuideNhAnnotator : Annotator {
         return match.groupValues[1].length > 1
     }
 
+    private fun isNumberType(type: String): Boolean = type.equals("number", true) || type.equals("integer", true)
+
     private fun error(holder: AnnotationHolder, range: TextRange, message: String) {
         holder.newAnnotation(HighlightSeverity.ERROR, message).range(range).create()
     }
@@ -129,7 +131,7 @@ class GuideNhAnnotator : Annotator {
             error(holder, attribute.valueRange, MyMessageBundle.message("diagnostic.enum", schema.values.joinToString()))
             return
         }
-        if (schema.valueStyle.equals("string", true) && attribute.valueStyle == "expression") {
+        if (schema.valueStyle.equals("string", true) && attribute.valueStyle == "expression" && !isNumberType(schema.type)) {
             error(holder, attribute.valueRange, MyMessageBundle.message("diagnostic.attribute.expects", attribute.name, schema.type))
             return
         }
