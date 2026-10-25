@@ -24,7 +24,7 @@ class GuideNhEnterHandler : EnterHandlerDelegateAdapter() {
         val prefix = text.substring(lineStart, caretOffset.get())
         val indent = prefix.takeWhile { it == ' ' || it == '\t' }
         val tag = Regex("<(?:([A-Za-z][A-Za-z0-9]*))[^>]*>$").find(prefix.trim())?.groupValues?.getOrNull(1)
-        if (tag != null && !prefix.trimEnd().endsWith("/>") && !tag.equals("br", true)) {
+        if (tag != null && !prefix.trimEnd().endsWith("/>") && !tag.equals("br", true) && !tag.equals("wbr", true)) {
             val options = CodeStyleSettingsManager.getSettings(file.project).getIndentOptions(file.fileType)
             val indentUnit = if (options.USE_TAB_CHARACTER) "\t" else " ".repeat(options.INDENT_SIZE.coerceAtLeast(1))
             editor.document.insertString(caretOffset.get(), "\n$indent$indentUnit")

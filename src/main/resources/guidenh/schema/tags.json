@@ -73,6 +73,14 @@
       "snippets": [],
       "forwardsAttributes": true
     },
+    "b": {
+      "name": "b",
+      "kind": "inline",
+      "description": "Generated from GuideNH b compiler source.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
     "BarChart": {
       "name": "BarChart",
       "kind": "chart",
@@ -2107,6 +2115,14 @@
       "name": "hr",
       "kind": "block",
       "description": "Generated from GuideNH hr compiler source.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "i": {
+      "name": "i",
+      "kind": "inline",
+      "description": "Generated from GuideNH i compiler source.",
       "attributes": {},
       "children": [],
       "snippets": []
@@ -5476,6 +5492,14 @@
       "name": "wavy",
       "kind": "inline",
       "description": "Generated from GuideNH wavy compiler source.",
+      "attributes": {},
+      "children": [],
+      "snippets": []
+    },
+    "wbr": {
+      "name": "wbr",
+      "kind": "inline",
+      "description": "Generated from GuideNH wbr compiler source.",
       "attributes": {},
       "children": [],
       "snippets": []

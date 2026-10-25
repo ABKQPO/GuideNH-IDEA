@@ -11,8 +11,9 @@ object GuideNhParser {
     private val resourceAttributeNames = setOf("resource", "file", "structure", "src", "iconimage")
     private val ignoredHtmlTagNames = setOf(
         "a", "abbr", "area", "b", "base", "code", "col", "del", "em", "embed", "hr", "i", "img", "input", "link", "mark",
-        "meta", "param", "s", "small", "source", "span", "strong", "sub", "sup", "track", "u", "wbr"
+        "meta", "param", "s", "small", "source", "span", "strong", "sub", "sup", "track", "u"
     )
+    private val voidTagNames = setOf("br", "wbr")
 
     fun parse(text: String): GuideNhDocumentModel {
         val tags = mutableListOf<GuideNhTag>()
@@ -30,7 +31,7 @@ object GuideNhParser {
                 nameRange = TextRange(nameStart, nameStart + name.length),
                 attributes = attributes,
                 closing = closing,
-                selfClosing = closing || source.trimEnd().endsWith("/>") || name.equals("br", true)
+                selfClosing = closing || source.trimEnd().endsWith("/>") || name.lowercase() in voidTagNames
             )
         }
         val references = mutableListOf<GuideNhReference>()
