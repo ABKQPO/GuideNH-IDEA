@@ -324,6 +324,7 @@
         "BoxAnnotation",
         "LineAnnotation",
         "DiamondAnnotation",
+        "OutlineAnnotation",
         "TextAnnotation",
         "BlockAnnotationTemplate"
       ]
@@ -357,6 +358,7 @@
         "BoxAnnotation",
         "LineAnnotation",
         "DiamondAnnotation",
+        "OutlineAnnotation",
         "TextAnnotation",
         "BlockAnnotationTemplate"
       ]
@@ -567,6 +569,7 @@
         "BoxAnnotation",
         "LineAnnotation",
         "DiamondAnnotation",
+        "OutlineAnnotation",
         "TextAnnotation",
         "BlockAnnotationTemplate"
       ]
@@ -1087,6 +1090,7 @@
         "BoxAnnotation",
         "LineAnnotation",
         "DiamondAnnotation",
+        "OutlineAnnotation",
         "TextAnnotation",
         "BlockAnnotationTemplate"
       ]
@@ -1954,6 +1958,7 @@
         "IsometricCamera",
         "LineAnnotation",
         "Orientation",
+        "OutlineAnnotation",
         "Particle",
         "PlaceBlock",
         "PlaySound",
@@ -2862,6 +2867,7 @@
         "BoxAnnotation",
         "LineAnnotation",
         "DiamondAnnotation",
+        "OutlineAnnotation",
         "TextAnnotation",
         "BlockAnnotationTemplate"
       ]
@@ -4671,6 +4677,7 @@
         "IsometricCamera",
         "LineAnnotation",
         "Orientation",
+        "OutlineAnnotation",
         "Particle",
         "PlaceBlock",
         "PlaySound",
@@ -5228,6 +5235,7 @@
         "BoxAnnotation",
         "LineAnnotation",
         "DiamondAnnotation",
+        "OutlineAnnotation",
         "TextAnnotation",
         "BlockAnnotationTemplate"
       ]
@@ -6056,6 +6064,84 @@
       },
       "children": [],
       "snippets": []
+    },
+    "OutlineAnnotation": {
+      "name": "OutlineAnnotation",
+      "kind": "any",
+      "description": "Generated from GuideNH OutlineAnnotation compiler source.",
+      "attributes": {
+        "alwaysOnTop": {
+          "type": "boolean",
+          "valueStyle": "string"
+        },
+        "color": {
+          "type": "color"
+        },
+        "entity": {
+          "type": "string"
+        },
+        "max": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "min": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "mode": {
+          "type": "enum",
+          "values": [
+            "auto",
+            "geometry",
+            "cutout",
+            "bounds"
+          ]
+        },
+        "pos": {
+          "type": "string",
+          "valueStyle": "string"
+        },
+        "pulse": {
+          "type": "boolean",
+          "valueStyle": "string"
+        },
+        "pulsePeriod": {
+          "type": "number",
+          "valueStyle": "string"
+        },
+        "showWhenChannels": {
+          "type": "string"
+        },
+        "showWhenStructure": {
+          "type": "string"
+        },
+        "showWhenTier": {
+          "type": "string"
+        },
+        "target": {
+          "type": "enum",
+          "values": [
+            "blocks",
+            "entities",
+            "all"
+          ]
+        },
+        "thickness": {
+          "type": "number",
+          "valueStyle": "string"
+        }
+      },
+      "children": [],
+      "snippets": [],
+      "preferredChildren": [
+        "BlockAnnotation",
+        "BoxAnnotation",
+        "LineAnnotation",
+        "DiamondAnnotation",
+        "OutlineAnnotation",
+        "TextAnnotation",
+        "BlockAnnotationTemplate"
+      ]
     }
   }
 }

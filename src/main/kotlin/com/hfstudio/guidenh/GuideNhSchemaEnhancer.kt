@@ -66,7 +66,7 @@ object GuideNhSchemaEnhancer {
         mergeAttrs(tags, "LineAnnotation", mapOf("arrow" to string(), "pointColor" to color(), "points" to string(), "pointSize" to number("expression"), "showPoints" to boolean("expression")))
         define(tags, "LinePoint", "GuideNH line annotation point", mapOf("color" to color(), "index" to number(), "show" to boolean("bare"), "size" to number("expression")))
         val conditions = mapOf("showWhenChannels" to string(), "showWhenStructure" to string(), "showWhenTier" to string())
-        listOf("BlockAnnotation", "BlockAnnotationTemplate", "BoxAnnotation", "DiamondAnnotation", "LineAnnotation", "PlaySound", "TextAnnotation").forEach { mergeAttrs(tags, it, conditions) }
+        listOf("BlockAnnotation", "BlockAnnotationTemplate", "BoxAnnotation", "DiamondAnnotation", "LineAnnotation", "OutlineAnnotation", "PlaySound", "TextAnnotation").forEach { mergeAttrs(tags, it, conditions) }
         mergeAttrs(tags, "ImportStructureLib", mapOf("name" to string()))
         mergeAttrs(tags, "PlaySound", sound())
     }
